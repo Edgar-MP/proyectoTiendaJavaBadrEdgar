@@ -29,24 +29,7 @@ public class ClienteDAO {
 	public Usuario buscaCliente(String nombre, String password) {
 		String sql = "SELECT * FROM clientes WHERE nombre = '" + nombre + "' AND password = '" + password +"'";
 		Usuario cliente = null;
-		/*try {
-			con = ds.getConnection();
-            Statement st = con.createStatement();
-            ResultSet rs = st.executeQuery(sql);
-            if (rs.next()) 
-            	cliente = new Usuario(rs.getInt("id"),
-	            						nombre,
-	            						password,
-	            						rs.getString("domicilio"),
-	            						rs.getString("codigopostal"),
-	            						rs.getString("telefono"),
-	            						rs.getString("email"));
-            rs.close();
-            st.close();
-            con.close();
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} */
+		
 		return cliente;
 	}
 	
