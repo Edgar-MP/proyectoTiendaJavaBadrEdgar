@@ -139,6 +139,11 @@ public class Usuario {
 	public void setAdmin(boolean admin) {
 		this.admin = admin;
 	}
+<<<<<<< Updated upstream
+=======
+	
+	
+>>>>>>> Stashed changes
 	
 	
 	

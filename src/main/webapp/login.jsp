@@ -88,6 +88,34 @@
             </div>
             <!-- <td colspan="2"><a href="registro.jsp">Registrarse</a></td> -->
     </form>
+    <c:if test="${param.codError != null}">
+    	<c:choose>
+    		<c:when test="${param.codError == 1}">
+    			<script>
+    				alert("Debes introducir el nombre de Usuario");
+			  	</script>
+    			<p class="error">Debes introducir el nombre de Usuario</p>
+    		</c:when>
+    		<c:when test="${param.codError == 2}">
+    			<script>
+    				alert("Debes introducir la contraseña");
+    			</script>
+    			<p class="error">Debes introducir la contraseña</p>
+    		</c:when>
+    		<c:when test="${param.codError == 3}">
+    			<script>
+    				alert("El usuario o la contraseña no son validas");
+    			</script>
+    			<p class="error">El usuario o la contraseña no son validas</p>
+    		</c:when>
+    		<c:when test="${param.codError == 12}">
+    			<script>
+    				alert("Debes introducir el usuario y la contraseña");
+    			</script>
+    			<p class="error">Debes introducir el usuario y la contraseña</p>
+    		</c:when>
+    	</c:choose>
+    </c:if>
     
     </div>
     <footer>

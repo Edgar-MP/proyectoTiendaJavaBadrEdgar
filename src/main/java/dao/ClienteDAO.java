@@ -9,6 +9,7 @@ import java.sql.Statement;
 import javax.servlet.ServletException;
 import javax.sql.DataSource;
 
+import beans.Imagen;
 import beans.Usuario;
 import conex.BDConex;
 
@@ -20,39 +21,47 @@ public class ClienteDAO {
 		
 	public ClienteDAO() throws ServletException {
 		bdConex = new BDConex();
-		con = bdConex.getCon();
 		ds = bdConex.getDs();
+		try {
+			con = ds.getConnection();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 	}
 	
 	/* Método que devuelve un cliente pasandole el nombre y la contraseña*/
 	public Usuario buscaCliente(String nombre, String password) {
-		String sql = "SELECT * FROM usaurio WHERE nombre = ? AND password = ?";
+		String sql = "SELECT * FROM usuario, imagen WHERE usuario.nombre = '"+nombre+"' AND usuario.password = '"+password+"' "
+				+ "AND usuario.id_imagen = imagen.idImagen";
 		Usuario user = null;
 		try {
+			/*
 			PreparedStatement ps = con.prepareStatement(sql);
 			ps.setString(1, nombre);
-			ps.setString(1, password);
-			ResultSet rs = ps.executeQuery(sql);
+			ps.setString(2, password);
+			*/
+			Statement st = con.createStatement();
+			ResultSet rs = st.executeQuery(sql);
             if (rs.next()) {
-            	rs.getInt("idUsuario");
-            	rs.getInt("idImg");
-            	rs.getString("nombre");
-            	rs.getString("apellidos");
-            	rs.getString("descripcion");
-            	rs.getString("direccion");
-            	rs.getString("codigoPostal");
-            	rs.getString("municipio");
-            	rs.getString("provincia");
-            	rs.getString("pais");
-            	rs.getString("telefono");
-            	rs.getString("email");
-            	rs.getString("contraseña");
-            	rs.getBoolean("admin");
-            	
+            	/*  img user*/
+            	Imagen img = new Imagen(rs.getInt("idImagen"), rs.getString("ruta"));
+            	/* Usuario */
+            	user = new Usuario();
+            	user.setIdUser(rs.getInt("idUsuario"));
+            	user.setNombre(rs.getString("nombre"));
+            	user.setApellidos(rs.getString("apellidos"));
+            	user.setDesc(rs.getString("descripcion"));
+            	user.setDir(rs.getString("direccion"));
+            	user.setCp(rs.getString("codigoPostal"));
+            	user.setProvincia(rs.getString("municipio"));
+            	user.setPais(rs.getString("pais"));
+            	user.setTlf(rs.getString("telefono"));
+            	user.setEmail(rs.getString("email"));
+            	user.setPassw(rs.getString("contraseña"));
+            	user.setAdmin(rs.getBoolean("admin"));
             }
-            	
             rs.close();
-            ps.close();
+            st.close();
             con.close();
 		} catch (SQLException e1) {
 			e1.printStackTrace();
