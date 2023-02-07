@@ -57,7 +57,7 @@ public class ClienteDAO {
             	user.setPais(rs.getString("pais"));
             	user.setTlf(rs.getString("telefono"));
             	user.setEmail(rs.getString("email"));
-            	user.setPassw(rs.getString("contraseña"));
+            	user.setPassw(rs.getString("password"));
             	user.setAdmin(rs.getBoolean("admin"));
             }
             rs.close();
