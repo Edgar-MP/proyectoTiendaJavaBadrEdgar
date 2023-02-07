@@ -1,12 +1,33 @@
 package beans;
 
 public class Imagen {
-	private int idImagen,tipo;
+	private int idImagen;
 	private String ruta;
-	public Imagen(int idImagen, int tipo, String ruta) {
+	
+	public Imagen(int idImagen, String ruta) {
 		this.idImagen = idImagen;
-		this.tipo = tipo;
 		this.ruta = ruta;
 	}
+	
+	public Imagen() {
+		
+	}
+
+	public int getIdImagen() {
+		return idImagen;
+	}
+
+	public void setIdImagen(int idImagen) {
+		this.idImagen = idImagen;
+	}
+
+	public String getRuta() {
+		return ruta;
+	}
+
+	public void setRuta(String ruta) {
+		this.ruta = ruta;
+	}
+	
 	
 }

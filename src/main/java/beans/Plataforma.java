@@ -1,25 +1,25 @@
 package beans;
 
-public class Compania {
-	private int id;
-	private String nombre, enlaceOficial;
+public class Plataforma {
+	private int idPlataforma;
+	private String nombre,enlaceOficial;
 	
-	public Compania(int id, String nombre, String enlaceOficial) {
-		this.id = id;
+	public Plataforma(int idPlataforma, String nombre, String enlaceOficial) {
+		this.idPlataforma = idPlataforma;
 		this.nombre = nombre;
 		this.enlaceOficial = enlaceOficial;
 	}
 	
-	public Compania() {
+	public Plataforma() {
 		
 	}
 
-	public int getId() {
-		return id;
+	public int getIdPlataforma() {
+		return idPlataforma;
 	}
 
-	public void setId(int id) {
-		this.id = id;
+	public void setIdPlataforma(int idPlataforma) {
+		this.idPlataforma = idPlataforma;
 	}
 
 	public String getNombre() {
@@ -37,6 +37,7 @@ public class Compania {
 	public void setEnlaceOficial(String enlaceOficial) {
 		this.enlaceOficial = enlaceOficial;
 	}
+	
 	
 	
 }
