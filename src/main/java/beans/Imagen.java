@@ -28,6 +28,11 @@ public class Imagen {
 	public void setRuta(String ruta) {
 		this.ruta = ruta;
 	}
+
+	@Override
+	public String toString() {
+		return "idImagen: "+idImagen+", ruta: "+ruta;
+	}
 	
 	
 }

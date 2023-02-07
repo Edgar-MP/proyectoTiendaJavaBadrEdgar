@@ -81,7 +81,87 @@
         </div>
     </header>
     <div class="pageContainer" id="maincontent">
+    <!-- Entrar de normal -->
+    <c:if test="${param.cambiarPassw == null}">
+	    <form action="../ServletLogin" method="post" class="contacto">
+	    	<input type="hidden" id="todoOk" name="todoOk" value="todoOk">
+	        
+	        	<div class="form-input">
+	                <label for="usuario">Nombre de usuario:</label>
+	                <input type="text" name="usuario" id="usuario" placeholder="Nombre de usuario" aria-labelledby="nombre de usuario">
+	            </div>
+	            <div class="form-input">
+	                <label for="password">Contraseña:</label>
+	                <input type="password" name="password" id="contraseña" placeholder="Contraseña" aria-labelledby="Contraseña">
+	            </div>
+	        	<div class="form-input enviar">
+	                <button type="submit">
+	                    Enviar! <i class="fa-solid fa-paper-plane"></i>
+	                </button>
+	            </div>
+	            <div>
+	            	<label><a href="login.jsp?cambiarPassw">Pulsa aquí si has olvidado la contraseña</a></label><br><br>
+	            	<label><a href="registro.jsp">Pulsa aquí para Registrarse</a></label>
+	            </div>
+	            <!-- <td colspan="2"><a href="registro.jsp">Registrarse</a></td> -->
+	    </form>
+    </c:if>
     
+    <!-- Entrar si se ha pulsado he olvidado la contraseña -->
+    <c:if test="${param.cambiarPassw != null}">
+	    <form action="../ServletLogin" method="post" class="contacto">
+	    	<input type="hidden" id="cambiarPassw" name="cambiarPassw" value="cambiarPassw">
+	        
+	        	<div class="form-input">
+	                <label for="usuario">Nombre de usuario:</label>
+	                <input type="text" name="usuario" id="usuario" placeholder="Nombre de usuario" aria-labelledby="nombre de usuario">
+	            </div>
+	            <div class="form-input">
+	                <label for="password">Nueva contraseña:</label>
+	                <input type="password" name="password" id="contraseña" placeholder="Nueva contraseña" aria-labelledby="Contraseña">
+	            </div>
+	        	<div class="form-input enviar">
+	                <button type="submit">
+	                    Enviar! <i class="fa-solid fa-paper-plane"></i>
+	                </button>
+	            </div>
+	            
+	            <!-- <td colspan="2"><a href="registro.jsp">Registrarse</a></td> -->
+	    </form>
+    </c:if>
+    
+ <!-- Password cambiada? -->
+    <c:if test="${param.passwCambiada != null}">
+    	<script>
+ 			alert("Si el usuario existe se habrá cambiado la contraseña");
+		</script>
+    </c:if>    
+    
+    <!-- Códigos de error -->
+    <c:if test="${param.codError != null}">
+    	<c:choose>
+    		<c:when test="${param.codError == 1}">
+    			<script>
+    				alert("Debes introducir el nombre de Usuario");
+			  	</script>
+    		</c:when>
+    		<c:when test="${param.codError == 2}">
+    			<script>
+    				alert("Debes introducir la contraseña");
+    			</script>
+    		</c:when>
+    		<c:when test="${param.codError == 3}">
+    			<script>
+    				alert("El usuario o la contraseña no son validas");
+    			</script>
+    		</c:when>
+    		<c:when test="${param.codError == 12}">
+    			<script>
+    				alert("Debes introducir el usuario y la contraseña");
+    			</script>
+    		</c:when>
+    	</c:choose>
+    </c:if>
     
     </div>
     <footer>

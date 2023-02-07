@@ -2,12 +2,13 @@ package beans;
 
 public class Plataforma {
 	private int idPlataforma;
-	private String nombre,enlaceOficial;
+	private String nombre, enlaceOficial, slugIcono;
 	
-	public Plataforma(int idPlataforma, String nombre, String enlaceOficial) {
+	public Plataforma(int idPlataforma, String nombre, String enlaceOficial, String slugIcono) {
 		this.idPlataforma = idPlataforma;
 		this.nombre = nombre;
 		this.enlaceOficial = enlaceOficial;
+		this.slugIcono = slugIcono;
 	}
 	
 	public Plataforma() {
@@ -36,6 +37,14 @@ public class Plataforma {
 
 	public void setEnlaceOficial(String enlaceOficial) {
 		this.enlaceOficial = enlaceOficial;
+	}
+
+	public String getSlugIcono() {
+		return slugIcono;
+	}
+
+	public void setSlugIcono(String slugIcono) {
+		this.slugIcono = slugIcono;
 	}
 	
 	

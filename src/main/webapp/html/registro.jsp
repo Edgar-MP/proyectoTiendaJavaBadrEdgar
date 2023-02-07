@@ -82,6 +82,98 @@
     </header>
     <div class="pageContainer" id="maincontent">
     
+    	<form action="../ServletLogin" method="post" class="contacto">
+	    	<input type="hidden" id="todoOk" name="todoOk" value="todoOk">
+	        
+	        	<!-- Nombre de usuario -->
+	        	<div class="form-input">
+	                <label for="usuario">Nombre de usuario:</label>
+	                <input type="text" name="usuario" id="usuario" placeholder="Nombre de usuario" aria-labelledby="nombre de usuario">
+	            </div>
+	            
+	            <!-- Apellidos -->
+	        	<div class="form-input">
+	                <label for="apellidos">Apellidos:</label>
+	                <input type="text" name="apellidos" id="apellidos" placeholder="Apellido/s" aria-labelledby="apellidos">
+	            </div>
+	            
+	            <!-- Contraseña -->
+	            <div class="form-input">
+	                <label for="password">Contraseña:</label>
+	                <input type="password" name="password" id="contraseña" placeholder="Contraseña" aria-labelledby="Contraseña">
+	            </div>
+	            
+	            <!-- Dirección -->
+	            <div class="form-input">
+	                <label for="direccion">Dirección:</label>
+	                <input type="text" name="direccion" id="direccion" placeholder="Dirección" aria-labelledby="Dirección">
+	            </div>
+	            
+	            <!-- Código Postal -->
+	            <div class="form-input">
+	                <label for="direccion">Dirección:</label>
+	                <input type="text" name="codigoPostal" id="codigoPostal" placeholder="Código Postal" aria-labelledby="Código Postal">
+	            </div>
+	            
+	            <!-- Municipio -->
+	            <div class="form-input">
+	                <label for="municipio">Municipio:</label>
+	                <input type="text" name="municipio" id="municipio" placeholder="Municipio" aria-labelledby="Municipio">
+	            </div>
+	            
+	            <!-- Provincia -->
+	            <div class="form-input">
+	                <label for="provincia">Provincia:</label>
+	                <input type="text" name="provincia" id="provincia" placeholder="Provincia" aria-labelledby="Provincia">
+	            </div>
+	            
+	            <!-- País -->
+	            <div class="form-input">
+	                <label for="pais">País:</label>
+	                <input type="text" name="pais" id="pais" placeholder="País" aria-labelledby="País">
+	            </div>
+	            
+	            <!-- Teléfono -->
+	            <div class="form-input">
+	                <label for="telefono">Teléfono:</label>
+	                <input type="text" name="telefono" id="telefono" placeholder="Teléfono" aria-labelledby="Teléfono">
+	            </div>
+	            
+	            <!-- Email -->
+	            <div class="form-input">
+	                <label for="email">Email:</label>
+	                <input type="text" name="email" id="email" placeholder="Email" aria-labelledby="Email">
+	            </div>
+	            
+	            <!-- Descripción -->
+	        	<div class="form-input descripcion">
+                	<label for="descripcion">Descripción:</label>
+                	<textarea name="descripcion" id="descripcion" cols="30" rows="50"></textarea>
+            	</div>
+            	
+            	<!-- Imagen -->
+	        	<div class="form-input">
+                	<label for="imagen">Imagen:</label>
+                	<input type="file" name="imagen" accept="image/*" />
+            	</div>
+	            
+	            <!-- Es admin -->
+	            <div class="form-input">
+	                <label for="admin">Es admin
+	                <input type="checkbox" name="admin" id="admin" aria-labelledby="admin"></label>
+	            </div>
+	            
+	            <!-- Enviar -->
+	        	<div class="form-input enviar">
+	                <button type="submit">
+	                    Enviar! <i class="fa-solid fa-paper-plane"></i>
+	                </button>
+	            </div>
+	            <div>
+	            	<label><a href="login.jsp">Pulsa aquí para iniciar sesión</a></label>
+	            </div>
+	            <!-- <td colspan="2"><a href="registro.jsp">Registrarse</a></td> -->
+	    	</form>
     
     </div>
     <footer>

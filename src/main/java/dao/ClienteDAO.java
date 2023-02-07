@@ -22,11 +22,6 @@ public class ClienteDAO {
 	public ClienteDAO() throws ServletException {
 		bdConex = new BDConex();
 		ds = bdConex.getDs();
-		try {
-			con = ds.getConnection();
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
 	}
 	
 	/* Método que devuelve un cliente pasandole el nombre y la contraseña*/
@@ -40,11 +35,13 @@ public class ClienteDAO {
 			ps.setString(1, nombre);
 			ps.setString(2, password);
 			*/
+			con = ds.getConnection();
 			Statement st = con.createStatement();
 			ResultSet rs = st.executeQuery(sql);
             if (rs.next()) {
             	/*  img user*/
             	Imagen img = new Imagen(rs.getInt("idImagen"), rs.getString("ruta"));
+            	System.out.print(img);
             	/* Usuario */
             	user = new Usuario();
             	user.setIdUser(rs.getInt("idUsuario"));
@@ -59,6 +56,7 @@ public class ClienteDAO {
             	user.setEmail(rs.getString("email"));
             	user.setPassw(rs.getString("password"));
             	user.setAdmin(rs.getBoolean("admin"));
+            	user.setImg(img);
             }
             rs.close();
             st.close();
@@ -67,6 +65,21 @@ public class ClienteDAO {
 			e1.printStackTrace();
 		}
 		return user;
+	}
+	
+	public void cambiarPassw(String username, String passw) {
+		String sql = "UPDATE usuario SET password = ? WHERE nombre = ?";
+		try {
+			con = ds.getConnection();
+			PreparedStatement ps = con.prepareStatement(sql);
+			ps.setString(1, passw);
+			ps.setString(2, username);
+			ps.executeUpdate();
+			ps.close();
+			con.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 	}
 	
 	/* Método que devuelve si existe un cliente pasandole el nombre */

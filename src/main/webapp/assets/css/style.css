@@ -2,6 +2,7 @@
 
 * {
     font-family: 'Mark Pro';
+    color: white;
 }
 
 :root {
@@ -94,6 +95,15 @@ h1 {
 .logo {
     display: flex;
     justify-content: center;
+    align-items: center;
+    margin-top: 10px; 
+}
+.logo p {
+	margin: 6px;
+}
+.imgUser {
+	border-radius: 50%;
+	border: 3px solid white;	
 }
 
 #btnMenu {
@@ -1124,7 +1134,14 @@ footer {
     .opinion textarea {
         height: 15vh !important;
     }
-
+	
+	.descripcion {
+		grid-columns: 2;
+	}
+	
+	.descripcion textarea {
+        height: 11vh !important;
+    }
     .enviar {
         grid-column: 1/3;
     }

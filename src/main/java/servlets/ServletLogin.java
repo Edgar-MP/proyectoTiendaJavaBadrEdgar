@@ -34,7 +34,7 @@ public class ServletLogin extends HttpServlet {
 		
 		if (request.getParameter("cerrarSesion") != null) {
 			request.getSession().removeAttribute("usuario");
-			request.getRequestDispatcher(request.getParameter("cerrarSesion")).forward(request, response);
+			response.sendRedirect(request.getParameter("cerrarSesion"));
 		}
 	}
 
@@ -55,16 +55,35 @@ public class ServletLogin extends HttpServlet {
 				codError += "2";
 			}
 			if (!codError.equals(""))
-				request.getRequestDispatcher("login.jsp?codError=" + codError).forward(request, response);
+				response.sendRedirect("html/login.jsp?codError=" + codError);
 			else {
 				ClienteDAO cd = new ClienteDAO();
 				Usuario user = cd.buscaCliente(request.getParameter("usuario"), 
 												request.getParameter("password"));
 				if (user == null)
-					request.getRequestDispatcher("login.jsp?codError=3").forward(request, response);
-//				Añadir Cliente a la session
-				request.getSession().setAttribute("usuario", user);
-				request.getRequestDispatcher("index.jsp").forward(request, response);
+					response.sendRedirect("html/login.jsp?codError=3");
+				else {
+//					Añadir Cliente a la session
+					request.getSession().setAttribute("usuario", user);
+					response.sendRedirect("index.jsp");
+				}
+			}
+		} else {
+			if (request.getParameter("cambiarPassw") != null) {
+				String codError = "";
+				if (request.getParameter("usuario").equals("")) {
+					codError += "1";
+				}
+				if (request.getParameter("password").equals("")) {
+					codError += "2";
+				}
+				if (!codError.equals(""))
+					response.sendRedirect("html/login.jsp?codError=" + codError);
+				else {
+					ClienteDAO cd = new ClienteDAO();
+					cd.cambiarPassw(request.getParameter("usuario"), request.getParameter("password"));
+					response.sendRedirect("html/login.jsp?passwCambiada="+request.getParameter("usuario"));
+				}
 			}
 		}
 	}

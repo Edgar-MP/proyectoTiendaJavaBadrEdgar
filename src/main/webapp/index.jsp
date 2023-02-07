@@ -1,6 +1,9 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <c:if test="${juegos == null}">
+		<c:redirect url="ServletInicio"/>
+    </c:if>
 <!DOCTYPE html>
 <!-- Idioma -->
 <html lang="es" data-uw-w-loader="">
@@ -37,7 +40,13 @@
         </div>
         <div id='menu'>
             <div class="logo">
-                <img src="assets/img/logo/logoBlancoLogitech.svg" alt="Logo de gaming4gamers" width="150">
+	            <c:if test="${usuario.img != null}">
+		            <img src="${usuario.img.ruta }" class="imgUser" alt="${usuario.img }" width="100">
+		            <p>${usuario.nombre.toUpperCase() }</p>
+	            </c:if>
+	            <c:if test="${usuario.img == null}">
+	                <img src="assets/img/logo/logoBlancoLogitech.svg" alt="Logo de gaming4gamers" width="150">
+	            </c:if>
             </div>
             <nav>
                 <ul>
@@ -46,20 +55,20 @@
                     </li>
                     <c:if test="${usuario == null}">
                     <li>
-                       	<a id="play" href="login.jsp">Login</a>
+                       	<a id="play" href="html/login.jsp">Login</a>
                     </li>
                     <li>
-                        <a id="xbox" href="registro.jsp">Registro</a>
+                        <a id="xbox" href="html/registro.jsp">Registro</a>
                     </li>
                     </c:if>
                     <c:if test="${usuario != null}">
 	                    <li>
 	                       	<a id="play" href="ServletLogin?cerrarSesion=index.jsp">Cerrar Sesión</a>
 	                    </li>
+	                    <li>
+	                    	<a id="xbox" href="html/perfilUsuario.jsp">Perfil de usuario</a>
+	                    </li>
                     </c:if>
-                    <li>
-                        <a id="nintendo" href="assets/html/contacto.html">Contacto</a>
-                    </li>
                 </ul>
             </nav>
 
@@ -97,29 +106,34 @@
             -->
          <div class="videojuegos">
          	<!-- JUEGO -->
-         	<div>
-                <a href="assets/html/videojuegos/uncharted.html">
-                    <picture>
-                        <source media="(max-width: 424px)" srcset="assets/img/videojuegos/banners/uncharted1.webp">
-                        <source media="(min-width: 600px)" srcset="assets/img/videojuegos/covers/uncharted1.webp">
-                        <img src="assets/img/videojuegos/banners/uncharted1.webp"
-                            alt="Cover Uncharted: El tesoro de Drake">
-                    </picture>
-                </a>
-                <div class="plataformas">
-                    <a href="https://www.playstation.com" target="_blank"
-                        aria-label="Enlace a la página oficial de PlayStation"><i
-                            class="fa-brands fa-playstation"></i></a>
-                </div>
-                <div class="detalles">
-                    <a href="assets/html/videojuegos/uncharted.html">
-                        <div class="titulo">Uncharted</div>
-                    </a>
-                    <a href="https://www.naughtydog.com/" target="_blank">
-                        <div class="Company">Naughty Dog</div>
-                    </a>
-                </div>
-            </div>
+         	<c:forEach var="juego" items="${juegos}">
+	         	<div>
+	                <a href="html/videojuegos.html?idJuego=${juego.idJuego }">
+	                    <picture>
+	                        <source media="(max-width: 424px)" srcset="${juego.imgCover.ruta }">
+	                        <source media="(min-width: 600px)" srcset="${juego.imgCover.ruta }">
+	                        <img src="${juego.imgCoverMobile.ruta }"
+	                            alt="Cover del videojuego ${juego.titulo }">
+	                    </picture>
+	                </a>
+	                <div class="plataformas">
+	                	<c:forEach var="plataforma" items="${juego.plataformas}">
+	                    <a href="${plataforma.enlaceOficial }" target="_blank"
+	                        aria-label="Enlace a la página oficial de ${plataforma.nombre }"><i
+	                            class="${plataforma.slugIcono }"></i></a>
+	                	</c:forEach>
+	                </div>
+	                <div class="detalles">
+	                     <a href="html/videojuegos.html?idJuego=${juego.idJuego }">
+	                        <div class="titulo">${juego.titulo}</div>
+	                    </a>
+	                    <a href="${juego.compania.enlaceOficial}" target="_blank">
+	                        <div class="Company">${juego.compania.nombre}</div>
+	                    </a>
+	                </div>
+	            </div>
+   			</c:forEach>
+         
          </div>
     </div>
     

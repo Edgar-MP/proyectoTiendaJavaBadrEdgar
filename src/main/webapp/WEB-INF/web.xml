@@ -25,4 +25,25 @@ xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee;http://xmlns.jcp.org/xml/
 		<url-pattern>/ServletLogin</url-pattern>
 	</servlet-mapping>
 	
+	<!-- Servlet registro -->
+	<servlet>
+		<servlet-name>ServletRegistro</servlet-name>
+		<servlet-class>servlets.ServletRegistro</servlet-class>
+	</servlet>
+	
+	<servlet-mapping>
+		<servlet-name>ServletRegistro</servlet-name>
+		<url-pattern>/ServletRegistro</url-pattern>
+	</servlet-mapping>
+	
+	<!-- Servlet inicio -->
+	<servlet>
+		<servlet-name>ServletInicio</servlet-name>
+		<servlet-class>servlets.ServletInicio</servlet-class>
+	</servlet>
+	
+	<servlet-mapping>
+		<servlet-name>ServletInicio</servlet-name>
+		<url-pattern>/ServletInicio</url-pattern>
+	</servlet-mapping>
 </web-app>

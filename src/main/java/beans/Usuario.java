@@ -139,6 +139,14 @@ public class Usuario {
 	public void setAdmin(boolean admin) {
 		this.admin = admin;
 	}
+
+	@Override
+	public String toString() {
+		return "Usuario [idUser=" + idUser + ", img=" + img + ", nombre=" + nombre + ", apellidos=" + apellidos
+				+ ", desc=" + desc + ", dir=" + dir + ", cp=" + cp + ", municipio=" + municipio + ", provincia="
+				+ provincia + ", pais=" + pais + ", tlf=" + tlf + ", email=" + email + ", passw=" + passw + ", admin="
+				+ admin + "]";
+	}
 	
 	
 	
