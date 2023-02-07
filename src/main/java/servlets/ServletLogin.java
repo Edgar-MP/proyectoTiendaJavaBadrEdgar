@@ -32,15 +32,17 @@ public class ServletLogin extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-
+		if (request.getParameter("cerrarSesion") != null) {
+			request.getSession().removeAttribute("usuario");
+			request.getRequestDispatcher(request.getParameter("cerrarSesion")).forward(request, response);
+		}
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		System.out.print("a");
+		
 		if (request.getParameter("todoOk") != null) {
 			if (request.getSession(false) != null)
 				request.getSession().invalidate();
@@ -61,7 +63,7 @@ public class ServletLogin extends HttpServlet {
 				if (user == null)
 					request.getRequestDispatcher("login.jsp?codError=3").forward(request, response);
 //				Añadir Cliente a la session
-				request.getSession().setAttribute("cliente", user);
+				request.getSession().setAttribute("usuario", user);
 				request.getRequestDispatcher("index.jsp").forward(request, response);
 			}
 		}

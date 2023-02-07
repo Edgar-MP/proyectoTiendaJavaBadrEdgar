@@ -43,12 +43,19 @@
                     <li>
                         <a id="pc" href="./index.jsp">Inicio</a>
                     </li>
+                    <c:if test="${usuario == null}">
                     <li>
-                        <a id="play" href="login.jsp">Login</a>
+                       	<a id="play" href="login.jsp">Login</a>
                     </li>
                     <li>
-                        <a id="xbox" href="assets/html/consolas/xbox.html">Xbox</a>
+                        <a id="xbox" href="registro.jsp">Registro</a>
                     </li>
+                    </c:if>
+                    <c:if test="${usuario != null}">
+	                    <li>
+	                       	<a id="play" href="ServletLogin?cerrarSesion=login.jsp">Cerrar Sesión</a>
+	                    </li>
+                    </c:if>
                     <li>
                         <a id="nintendo" href="assets/html/contacto.html">Contacto</a>
                     </li>
