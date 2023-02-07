@@ -9,7 +9,6 @@ import java.sql.Statement;
 import javax.servlet.ServletException;
 import javax.sql.DataSource;
 
-import beans.Cliente;
 import beans.Usuario;
 import conex.BDConex;
 
@@ -27,13 +26,42 @@ public class ClienteDAO {
 	
 	/* Método que devuelve un cliente pasandole el nombre y la contraseña*/
 	public Usuario buscaCliente(String nombre, String password) {
-		String sql = "SELECT * FROM clientes WHERE nombre = '" + nombre + "' AND password = '" + password +"'";
-		Usuario cliente = null;
-		
-		return cliente;
+		String sql = "SELECT * FROM usaurio WHERE nombre = ? AND password = ?";
+		Usuario user = null;
+		try {
+			PreparedStatement ps = con.prepareStatement(sql);
+			ps.setString(1, nombre);
+			ps.setString(1, password);
+			ResultSet rs = ps.executeQuery(sql);
+            if (rs.next()) {
+            	rs.getInt("idUsuario");
+            	rs.getInt("idImg");
+            	rs.getString("nombre");
+            	rs.getString("apellidos");
+            	rs.getString("descripcion");
+            	rs.getString("direccion");
+            	rs.getString("codigoPostal");
+            	rs.getString("municipio");
+            	rs.getString("provincia");
+            	rs.getString("pais");
+            	rs.getString("telefono");
+            	rs.getString("email");
+            	rs.getString("contraseña");
+            	rs.getBoolean("admin");
+            	
+            }
+            	
+            rs.close();
+            ps.close();
+            con.close();
+		} catch (SQLException e1) {
+			e1.printStackTrace();
+		}
+		return user;
 	}
 	
 	/* Método que devuelve si existe un cliente pasandole el nombre */
+	/*
 	public boolean buscaCliente(String nombre) {
 		boolean existe = false;
 		String sql = "SELECT * FROM clientes WHERE nombre = '" + nombre + "'";
@@ -51,8 +79,10 @@ public class ClienteDAO {
 		} 
 		return existe;
 	}
+	*/
 	
 	/* Método que devuelve si existe un cliente pasandole el nombre */
+	/*
 	public int cantClientesRegistrados() {
 		String sql = "SELECT count(*) AS cantCli FROM clientes";
 		int cantClientes = 0;
@@ -70,7 +100,9 @@ public class ClienteDAO {
 		} 
 		return cantClientes;
 	}
+	*/
 	
+	/*
 	public boolean guardarCliente(Cliente c) {
 		boolean guardado = false;
 		String sql = "INSERT INTO clientes(id, nombre, password, domicilio, codigopostal, telefono, email) "
@@ -98,7 +130,8 @@ public class ClienteDAO {
 		
 		return guardado;
 	}
-	
+	*/
+	/*
 	public boolean actualizarCliente(Cliente c) {
 		boolean editado = false;
 		String sql = "UPDATE clientes SET nombre = ?, pasword = ?, domicilio = ?, "
@@ -125,4 +158,5 @@ public class ClienteDAO {
 		
 		return editado;
 	}
+	*/
 }

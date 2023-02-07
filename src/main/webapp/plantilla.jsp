@@ -41,7 +41,7 @@
             <nav>
                 <ul>
                     <li>
-                        <a id="pc" href="./index.html">Inicio</a>
+                        <a id="pc" href="index.jsp">Inicio</a>
                     </li>
                     <li>
                         <a id="play" href="login.jsp">Login</a>
@@ -68,6 +68,8 @@
         </div>
     </header>
     <div class="pageContainer" id="maincontent">
+    
+    
     </div>
     <footer>
         <img src="assets/img/logo/logoBlancoLogitech.svg" alt="Logo de Gaming4Gamers" width="150">
