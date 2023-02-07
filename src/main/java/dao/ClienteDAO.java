@@ -33,14 +33,8 @@ public class ClienteDAO {
 			con = ds.getConnection();
             Statement st = con.createStatement();
             ResultSet rs = st.executeQuery(sql);
-            if (rs.next()) 
-            	cliente = new Usuario(rs.getInt("id"),
-	            						nombre,
-	            						password,
-	            						rs.getString("domicilio"),
-	            						rs.getString("codigopostal"),
-	            						rs.getString("telefono"),
-	            						rs.getString("email"));
+            if (rs.next()) ;
+            
             rs.close();
             st.close();
             con.close();
