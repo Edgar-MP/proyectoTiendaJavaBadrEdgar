@@ -59,7 +59,7 @@
                     </c:if>
 					<c:if test="${usuario != null}">
 	                    <li>
-	                       	<a id="play" href="../ServletLogin?cerrarSesion=html/login.jsp">Cerrar Sesión</a>
+	                       	<a id="play" href="../ServletLogin?cerrarSesion=html/registro.jsp">Cerrar Sesión</a>
 	                    </li>
 	                    <li>
 	                    	<a id="xbox" href="perfilUsuario.jsp">Perfil de usuario</a>
@@ -82,9 +82,12 @@
     </header>
     <div class="pageContainer" id="maincontent">
     
-    	<form action="../ServletLogin" method="post" class="contacto">
+    	<form action="../ServletRegistro" method="post" class="contacto">
 	    	<input type="hidden" id="todoOk" name="todoOk" value="todoOk">
-	        
+	        	<c:if test="${param.error!=null}">
+	        	<!-- estilo mal hecho falta retocar-->
+			    	<p>Campos Vacios</p>
+	       		</c:if>
 	        	<!-- Nombre de usuario -->
 	        	<div class="form-input">
 	                <label for="usuario">Nombre de usuario:</label>
@@ -174,6 +177,7 @@
 	            </div>
 	            <!-- <td colspan="2"><a href="registro.jsp">Registrarse</a></td> -->
 	    	</form>
+	    	
     
     </div>
     <footer>
