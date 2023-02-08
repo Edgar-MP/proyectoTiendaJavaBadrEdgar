@@ -3,12 +3,12 @@ package beans;
 public class Personaje {
 	private int idPersonaje;
 	private String nombre;
-	private VideoJuego juego;
+	private int idJuego;
 	private Imagen imagen;
 	
-	public Personaje(int idPersonaje, VideoJuego juego, Imagen imagen, String nombre) {
+	public Personaje(int idPersonaje, int idJuego, Imagen imagen, String nombre) {
 		this.idPersonaje = idPersonaje;
-		this.juego = juego;
+		this.idJuego = idJuego;
 		this.imagen = imagen;
 		this.nombre = nombre;
 	}
@@ -33,12 +33,12 @@ public class Personaje {
 		this.nombre = nombre;
 	}
 
-	public VideoJuego getJuego() {
-		return juego;
+	public int getJuego() {
+		return idJuego;
 	}
 
-	public void setJuego(VideoJuego juego) {
-		this.juego = juego;
+	public void setJuego(int idJuego) {
+		this.idJuego = idJuego;
 	}
 
 	public Imagen getImagen() {
@@ -47,6 +47,11 @@ public class Personaje {
 
 	public void setImagen(Imagen imagen) {
 		this.imagen = imagen;
+	}
+
+	@Override
+	public String toString() {
+		return nombre;
 	}
 	
 	

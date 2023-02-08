@@ -1,6 +1,9 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<c:if test="${param.idJuego != null}">
+	<c:redirect url="../ServletJuego?idJuego=${param.idJuego}"/>
+</c:if>
 <!DOCTYPE html>
 <!-- Idioma -->
 <html lang="es" data-uw-w-loader="">
@@ -80,66 +83,79 @@
             </div>
         </div>
     </header>
-    <c:if test="${param.idJuego != null}">
+    <c:if test="${juego != null}">
 	    <div class="bannerJuego">
-	        <div class="imgBannerJuego" id="tlou"></div>
-	        <!-- <img src="../../img/videojuegos/banners/TLoU1.webp" alt=""> -->
+	        <div class="imgBannerJuego" style="background-image: url(../${juego.imgBanner});"></div>
 	    </div>
 	    <div class="juego" id="maincontent">
 	        <div class="gridJuego">
 	            <div class="coverJuego">
-	                <img src="../../img/videojuegos/covers/TLoU1.webp" alt="Portada The Last of Us: Parte 1" width="250">
+	                <img src="../${juego.imgCover }" alt="Portada The Last of Us: Parte 1" width="250">
 	            </div>
 	            <div class="infoJuego">
-	                <h2>The Last of Us</h2>
-	                <h3>1 de Septiembre, 2022</h3>
-	                <a href="https://www.naughtydog.com/" target="_blank">Naughty Dog</a>
+	                <h2>${juego.titulo}</h2>
+	                <h3>${juego.fecha }</h3>
+	                <a href="${juego.compania.enlaceOficial }" target="_blank">${juego.compania}</a>
 	            </div>
 	            <div class="resumen">
-	                <p>La historia de <b>'The Last of Us'</b> tiene lugar veinte años después de que la civilización moderna
-	                    haya sido destruida. <b>Joel</b>, un superviviente de carácter recio, es contratado para sacar de
-	                    contrabando a <b>Ellie</b>, una niña de 14 años, fuera de una opresiva zona de cuarentena. Lo que
-	                    comienza como un pequeño trabajo pronto se convierte en un viaje brutal y desgarrador, ya que ambos
-	                    deben atravesar los EE. UU. y depender el uno del otro para sobrevivir.</p>
+	                <p>${juego.descripcion}</p>
 	                <div class="caracteristicasMobile">
 	                    <ul>
-	                        <li>Plataformas: <span><i class="fa-brands fa-playstation fa-lg"></i></span></li>
-	                        <li>Genero: <span>Accion, Aventura</span></li>
+	                        <li>Plataformas: 
+		                        <span>
+			                        <c:forEach var="plataforma" items="${juego.plataformas}">
+			                        	<i class="${plataforma.slugIcono }"></i>
+			                        </c:forEach>
+		                        </span>
+	                        </li>
+	                        <li>Genero: 
+	                        	<span>
+	                        		<c:forEach var="genero" items="${juego.generos}" varStatus="loop">
+		                        		${genero }<c:if test="${!loop.last}">, </c:if>
+	                       			</c:forEach>
+	                        	</span>
+	                        </li>
 	                    </ul>
 	                </div>
 	            </div>
 	            <div class="caracteristicas">
 	                <ul>
-	                    <li>Plataformas: <span><i class="fa-brands fa-playstation fa-lg"></i></span></li>
-	                    <li>Genero: <span>Accion, Aventura</span></li>
-	                </ul>
+                        <li>Plataformas: 
+	                        <span>
+		                        <c:forEach var="plataforma" items="${juego.plataformas}">
+		                        	<i class="${plataforma.slugIcono }"></i>
+		                        </c:forEach>
+	                        </span>
+                        </li>
+                        <li>Genero: 
+                        	<span>
+                        		<c:forEach var="genero" items="${juego.generos}" varStatus="loop">
+	                        		${genero }<c:if test="${!loop.last}">, </c:if>
+                       			</c:forEach>
+                        	</span>
+                        </li>
+                    </ul>
 	            </div>
 	        </div>
 	    </div>
 	    <div class="trailerJuego">
 	        <h2>Trailer</h2>
-	        <iframe src="https://www.youtube.com/embed/v/Mel8DZBEJTo?controls=1&allowfullscreen=1&playlist=Mel8DZBEJTo"
-	            title="Trailer The Last of Us: Parte 1 PS5" allowfullscreen></iframe>
+	        <iframe src="${juego.trailer }"
+	            title="Trailer ${juego.titulo }" allowfullscreen></iframe>
 	    </div>
 	    <div class="containerProtagonistas">
 	        <h2>Protagonistas</h2>
 	        <div class="protas">
-	            <div class="prota">
-	                <img src="../../img/videojuegos/tlou/ellie.webp" alt="Ellie Williams" width="300" height="224">
-	                <p>Ellie Williams</p>
-	            </div>
-	            <div class="prota">
-	                <img src="../../img/videojuegos/tlou/joel.webp" alt="Joel Miller" width="300" height="224">
-	                <p>Joel Miller</p>
-	            </div>
-	            <div class="prota">
-	                <img src="../../img/videojuegos/tlou/marlene.webp" alt="Marlene" width="300" height="224">
-	                <p>Marlene</p>
-	            </div>
+		        <c:forEach var="personaje" items="${juego.personajes}" varStatus="loop">
+		        	<div class="prota">
+		                <img src="../${personaje.imagen}" alt="${personaje}" width="300" height="224">
+		                <p>${personaje}</p>
+		            </div>
+		        </c:forEach>
 	        </div>
 	    </div>
     </c:if>
-    <c:if test="${param.idJuego == null}">
+    <c:if test="${juego == null}">
 	    <div class="pageContainer" id="maincontent" style="width: 80vw; height: 60vh;margin-top: 2rem;">
 	    	<h2>Creo que te has perdido</h2>
 	    	<p><a href="../index.jsp">Volver a Inicio</a></p>

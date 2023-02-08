@@ -46,4 +46,15 @@ xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee;http://xmlns.jcp.org/xml/
 		<servlet-name>ServletInicio</servlet-name>
 		<url-pattern>/ServletInicio</url-pattern>
 	</servlet-mapping>
+	
+	<!-- Servlet juego -->
+	<servlet>
+		<servlet-name>ServletJuego</servlet-name>
+		<servlet-class>servlets.ServletJuego</servlet-class>
+	</servlet>
+	
+	<servlet-mapping>
+		<servlet-name>ServletJuego</servlet-name>
+		<url-pattern>/ServletJuego</url-pattern>
+	</servlet-mapping>
 </web-app>

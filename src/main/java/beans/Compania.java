@@ -37,6 +37,11 @@ public class Compania {
 	public void setEnlaceOficial(String enlaceOficial) {
 		this.enlaceOficial = enlaceOficial;
 	}
+
+	@Override
+	public String toString() {
+		return nombre;
+	}
 	
 	
 }

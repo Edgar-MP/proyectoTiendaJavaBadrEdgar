@@ -31,7 +31,7 @@ public class Imagen {
 
 	@Override
 	public String toString() {
-		return "idImagen: "+idImagen+", ruta: "+ruta;
+		return ruta;
 	}
 	
 	
