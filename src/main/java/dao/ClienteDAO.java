@@ -83,10 +83,9 @@ public class ClienteDAO {
 	}
 	
 	/* Método que devuelve si existe un cliente pasandole el nombre */
-	/*
 	public boolean buscaCliente(String nombre) {
 		boolean existe = false;
-		String sql = "SELECT * FROM clientes WHERE nombre = '" + nombre + "'";
+		String sql = "SELECT * FROM usuario WHERE nombre = '" + nombre + "'";
 		try {
 			con = ds.getConnection();
             Statement st = con.createStatement();
@@ -101,7 +100,39 @@ public class ClienteDAO {
 		} 
 		return existe;
 	}
-	*/
+	
+	//Método para introducir un nuevo usuario en la base de datos
+	public boolean guardarCliente(Usuario u) {
+		boolean guardado = false;
+		String sql = "INSERT INTO clientes(nombre, apellidos, descripcion, direccion, codigoPostal, municipio, provincia, pais, telefono, email, password, admin, id_imagen) "
+				+ "VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        try {
+            Connection con = ds.getConnection();
+            PreparedStatement st = con.prepareStatement(sql);
+          st.setString(1, u.getNombre());
+          st.setString(2, u.getApellidos());
+          st.setString(3, u.getDesc());
+          st.setString(4, u.getDir());
+          st.setString(5, u.getCp());
+          st.setString(6, u.getMunicipio());
+          st.setString(7, u.getProvincia());
+          st.setString(8, u.getPais());
+          st.setString(9, u.getTlf());
+          st.setString(10, u.getEmail());
+          st.setString(11, u.getPassw());
+          st.setInt(12, 0);
+          st.setInt(13, u.getImg().getIdImagen());
+          st.executeUpdate();
+          guardado = true;
+            
+            st.close();
+            con.close();
+        } catch (SQLException ex) {
+            System.err.println("Error en metodo guardarCliente: " + ex);
+        }
+		
+		return guardado;
+	}
 	
 	/* Método que devuelve si existe un cliente pasandole el nombre */
 	/*
@@ -124,35 +155,7 @@ public class ClienteDAO {
 	}
 	*/
 	
-	/*
-	public boolean guardarCliente(Cliente c) {
-		boolean guardado = false;
-		String sql = "INSERT INTO clientes(id, nombre, password, domicilio, codigopostal, telefono, email) "
-				+ "VALUES(?, ?, ?, ?, ?, ?, ?)";
-        try {
-            Connection con = ds.getConnection();
-            PreparedStatement st = con.prepareStatement(sql);
-            
-            st.setInt(1, c.getId());
-            st.setString(2, c.getNombre());
-            st.setString(3, c.getPassword());
-            st.setString(4, c.getDomicilio());
-            st.setString(5, c.getCodigoPostal());
-            st.setString(6, c.getTelefono());
-            st.setString(7, c.getEmail());
-            
-            st.executeUpdate();
-            guardado = true;
-            
-            st.close();
-            con.close();
-        } catch (SQLException ex) {
-            System.err.println("Error en metodo guardarCliente: " + ex);
-        }
-		
-		return guardado;
-	}
-	*/
+	
 	/*
 	public boolean actualizarCliente(Cliente c) {
 		boolean editado = false;

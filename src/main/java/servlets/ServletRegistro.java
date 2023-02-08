@@ -7,6 +7,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import dao.ClienteDAO;
+
 /**
  * Servlet implementation class ServletRegistro
  */
@@ -20,6 +22,7 @@ public class ServletRegistro extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		ClienteDAO cd = new ClienteDAO();
 		String usuario=request.getParameter("usuario");
 		String apellidos=request.getParameter("apellidos");
 		String password=request.getParameter("password");
@@ -33,6 +36,9 @@ public class ServletRegistro extends HttpServlet {
 		String descripcion=request.getParameter("descripcion");
 		if(usuario.equals("")) {
 			response.sendRedirect("html/registro.jsp?error=CV");
+		}
+		else if(cd.buscaCliente(usuario)==true){
+			response.sendRedirect("html/registro.jsp?usuario=true");
 		}
 		else if(apellidos.equals("")) {
 			response.sendRedirect("html/registro.jsp?error=CV");
@@ -64,6 +70,10 @@ public class ServletRegistro extends HttpServlet {
 		else if(descripcion.equals("")) {
 			response.sendRedirect("html/registro.jsp?error=CV");
 		}
+		else{
+			
+		}
+		
 	}
 
 }

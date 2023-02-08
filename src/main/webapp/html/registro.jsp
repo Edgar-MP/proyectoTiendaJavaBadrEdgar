@@ -88,6 +88,10 @@
 	        	<!-- estilo mal hecho falta retocar-->
 			    	<p>Campos Vacios</p>
 	       		</c:if>
+	       		<c:if test="${param.usuario!=null}">
+	        	<!-- estilo mal hecho falta retocar-->
+			    	<p>Usuario existente</p>
+	       		</c:if>
 	        	<!-- Nombre de usuario -->
 	        	<div class="form-input">
 	                <label for="usuario">Nombre de usuario:</label>
