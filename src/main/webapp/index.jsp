@@ -108,7 +108,7 @@
          	<!-- JUEGO -->
          	<c:forEach var="juego" items="${juegos}">
 	         	<div>
-	                <a href="html/videojuegos.html?idJuego=${juego.idJuego }">
+	                <a href="html/videojuegos.jsp?idJuego=${juego.idJuego }">
 	                    <picture>
 	                        <source media="(max-width: 424px)" srcset="${juego.imgCover.ruta }">
 	                        <source media="(min-width: 600px)" srcset="${juego.imgCover.ruta }">
