@@ -4,7 +4,9 @@
     font-family: 'Mark Pro';
     color: white;
 }
-
+h1 {
+	font-weight: bold;
+}
 :root {
     --xbox-color: #107C10;
     --play-color: #003087;
