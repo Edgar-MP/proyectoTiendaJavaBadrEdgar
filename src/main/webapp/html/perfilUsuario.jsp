@@ -145,14 +145,14 @@
 		<c:if test="${param.idUsuario == null}">
 			<c:redirect url = "../index.jsp?B"/>
 		</c:if>
-		<c:if test="${usuario.idUser == para.idUsuario }">
+		<c:if test="${usuario.idUser == param.idUsuario }">
 			<c:redirect url = "../ServletPerfilUsuario?idUser=${param.idUsuario }"/>
 		</c:if>
 		<c:if test="${usuario.admin == true}">
 			<c:redirect url = "../ServletPerfilUsuario?idUser=${param.idUsuario }"/>
 		</c:if>
 		<c:if test="${usuario.admin == false}">
-			<c:if test="${usuario.idUser != para.idUsuario }">
+			<c:if test="${usuario.idUser != param.idUsuario }">
 				<c:redirect url = "../index.jsp?${usuario.admin}"/>
 			</c:if>
 		</c:if>
