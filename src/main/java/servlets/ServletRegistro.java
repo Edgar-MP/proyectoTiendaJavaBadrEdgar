@@ -74,7 +74,7 @@ public class ServletRegistro extends HttpServlet {
 		else{
 			Usuario u= new Usuario(0, null, usuario, apellidos, descripcion, direccion, codigoPostal, municipio,provincia, pais, telefono,email,password, 0);
 			cd.guardarCliente(u);
-			response.sendRedirect("index.jsp");
+			response.sendRedirect("html/login.jsp");
 		}
 	}
 
