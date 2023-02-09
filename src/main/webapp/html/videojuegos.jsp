@@ -21,7 +21,12 @@
     <!-- favicon -->
     <link rel="shortcut icon" sizes="any" href="../assets/img/favicon/favicon.ico">
     <!-- Titulo -->
-    <title>Inicio | Gaming for Gamers</title>
+    <c:if test="${juego != null}">
+    	<title>${juego.titulo } | Gaming for Gamers</title>
+    </c:if>
+    <c:if test="${juego == null}">
+    	<title>Juego no encontrado | Gaming for Gamers</title>
+    </c:if>
     <!-- CSS -->
     <link rel="stylesheet" href="../assets/css/style.css" media="screen">
 </head>
@@ -96,6 +101,7 @@
 	                <h2>${juego.titulo}</h2>
 	                <h3>${juego.fecha }</h3>
 	                <a href="${juego.compania.enlaceOficial }" target="_blank">${juego.compania}</a>
+	                <h4>${juego.precio } €</h4>
 	            </div>
 	            <div class="resumen">
 	                <p>${juego.descripcion}</p>
@@ -137,6 +143,9 @@
                     </ul>
 	            </div>
 	        </div>
+	    </div>
+	    <div class="comprar">
+	    	<a href="" class="button-27">Comprar ahora</a>
 	    </div>
 	    <div class="trailerJuego">
 	        <h2>Trailer</h2>
