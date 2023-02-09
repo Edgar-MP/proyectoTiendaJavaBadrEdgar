@@ -26,8 +26,17 @@ public class ClienteDAO {
 		ds = bdConex.getDs();
 	}
 	
+	 public static final String capitalize(String str) {
+
+	      if (str == null || str.length() == 0) return str;
+
+	      return str.substring(0, 1).toUpperCase() + str.substring(1).toLowerCase();
+
+	  }
+	
 	/* Método que devuelve un cliente pasandole el nombre y la contraseña*/
 	public Usuario buscaCliente(String nombre, String password) {
+		nombre = capitalize(nombre);
 		String sql = "SELECT * FROM usuario, imagen WHERE usuario.nombre = '"+nombre+"' AND usuario.password = '"+password+"' "
 				+ "AND usuario.id_imagen = imagen.idImagen";
 		Usuario user = null;
@@ -46,12 +55,13 @@ public class ClienteDAO {
             	/* Usuario */
             	user = new Usuario();
             	user.setIdUser(rs.getInt("idUsuario"));
-            	user.setNombre(rs.getString("nombre"));
+            	user.setNombre(capitalize(rs.getString("nombre")));
             	user.setApellidos(rs.getString("apellidos"));
             	user.setDesc(rs.getString("descripcion"));
             	user.setDir(rs.getString("direccion"));
             	user.setCp(rs.getString("codigoPostal"));
-            	user.setProvincia(rs.getString("municipio"));
+            	user.setMunicipio(rs.getString("municipio"));
+            	user.setProvincia(rs.getString("provincia"));
             	user.setPais(rs.getString("pais"));
             	user.setTlf(rs.getString("telefono"));
             	user.setEmail(rs.getString("email"));
@@ -83,12 +93,13 @@ public class ClienteDAO {
             	/* Usuario */
             	user = new Usuario();
             	user.setIdUser(rs.getInt("idUsuario"));
-            	user.setNombre(rs.getString("nombre"));
+            	user.setNombre(capitalize(rs.getString("nombre")));
             	user.setApellidos(rs.getString("apellidos"));
             	user.setDesc(rs.getString("descripcion"));
             	user.setDir(rs.getString("direccion"));
             	user.setCp(rs.getString("codigoPostal"));
-            	user.setProvincia(rs.getString("municipio"));
+            	user.setMunicipio(rs.getString("municipio"));
+            	user.setProvincia(rs.getString("provincia"));
             	user.setPais(rs.getString("pais"));
             	user.setTlf(rs.getString("telefono"));
             	user.setEmail(rs.getString("email"));
@@ -111,7 +122,7 @@ public class ClienteDAO {
 			con = ds.getConnection();
 			PreparedStatement ps = con.prepareStatement(sql);
 			ps.setString(1, passw);
-			ps.setString(2, username);
+			ps.setString(2, capitalize(username));
 			ps.executeUpdate();
 			ps.close();
 			con.close();
@@ -122,6 +133,7 @@ public class ClienteDAO {
 	
 	/* Método que devuelve si existe un cliente pasandole el nombre */
 	public boolean buscaCliente(String nombre) {
+		nombre = capitalize(nombre);
 		boolean existe = false;
 		String sql = "SELECT * FROM usuario WHERE nombre = '" + nombre + "'";
 		try {
@@ -147,7 +159,7 @@ public class ClienteDAO {
         try {
             Connection con = ds.getConnection();
             PreparedStatement st = con.prepareStatement(sql);
-          st.setString(1, u.getNombre());
+          st.setString(1, capitalize(u.getNombre()));
           st.setString(2, u.getApellidos());
           st.setString(3, u.getDesc());
           st.setString(4, u.getDir());
@@ -191,7 +203,7 @@ public class ClienteDAO {
             ResultSet rs = st.executeQuery(sql);
             while(rs.next()){
             	int idUsuario=rs.getInt("usuario.idUsuario");
-            	String nombre=rs.getString("usuario.nombre");
+            	String nombre=capitalize(rs.getString("usuario.nombre"));
             	int admin= rs.getInt("usuario.admin");
             	String ruta=rs.getString("imagen.ruta");
             	Imagen img= new Imagen(0, ruta);
