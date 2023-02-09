@@ -145,7 +145,7 @@
 	        </div>
 	    </div>
 	    <div class="comprar">
-	    	<a href="" class="button-27">Comprar ahora</a>
+	    	<a href="" class="button-27">Añadir al carrito</a>
 	    </div>
 	    <div class="trailerJuego">
 	        <h2>Trailer</h2>
