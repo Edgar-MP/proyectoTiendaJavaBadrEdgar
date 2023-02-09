@@ -35,6 +35,7 @@ public class ServletRegistro extends HttpServlet {
 		String telefono=request.getParameter("telefono");
 		String email=request.getParameter("email");
 		String descripcion=request.getParameter("descripcion");
+		String admin=request.getParameter("admin");
 		if(usuario.equals("")) {
 			response.sendRedirect("html/registro.jsp?error=CV");
 		}
@@ -72,7 +73,14 @@ public class ServletRegistro extends HttpServlet {
 			response.sendRedirect("html/registro.jsp?error=CV");
 		}
 		else{
-			Usuario u= new Usuario(0, null, usuario, apellidos, descripcion, direccion, codigoPostal, municipio,provincia, pais, telefono,email,password, 0);
+			int es;
+			if(admin==null) {
+				es=0;
+			}
+			else {
+				es=1;
+			}
+			Usuario u= new Usuario(0, null, usuario, apellidos, descripcion, direccion, codigoPostal, municipio,provincia, pais, telefono,email,password, es);
 			cd.guardarCliente(u);
 			response.sendRedirect("html/login.jsp");
 		}
