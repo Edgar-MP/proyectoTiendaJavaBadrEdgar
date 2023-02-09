@@ -62,7 +62,7 @@
 	                       	<a id="play" href="../ServletLogin?cerrarSesion=html/login.jsp">Cerrar Sesión</a>
 	                    </li>
 	                    <li>
-	                    	<a id="xbox" href="perfilUsuario.jsp">Perfil de usuario</a>
+	                    	<a id="xbox" href="perfilUsuario.jsp?idUsuario=${usuario.idUser}">Perfil de usuario</a>
 	                    </li>
 	                    <c:if test="${usuario.admin == true}">
 		                    <li>

@@ -68,4 +68,15 @@ xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee;http://xmlns.jcp.org/xml/
 		<servlet-name>ServletListadoUsuarios</servlet-name>
 		<url-pattern>/ServletListadoUsuarios</url-pattern>
 	</servlet-mapping>
+	
+	<!-- Servlet Perfil Usuario -->
+	<servlet>
+		<servlet-name>ServletPerfilUsuario</servlet-name>
+		<servlet-class>servlets.ServletPerfilUsuario</servlet-class>
+	</servlet>
+	
+	<servlet-mapping>
+		<servlet-name>ServletPerfilUsuario</servlet-name>
+		<url-pattern>/ServletPerfilUsuario</url-pattern>
+	</servlet-mapping>
 </web-app>

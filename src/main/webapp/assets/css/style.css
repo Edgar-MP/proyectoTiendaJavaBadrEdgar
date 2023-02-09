@@ -103,7 +103,7 @@ h1 {
 .logo p {
 	margin: 6px;
 }
-.imgUser {
+img.imgUser {
 	border-radius: 50%;
 	border: 3px solid white;	
 }
@@ -1219,4 +1219,24 @@ footer {
 .button-27:active {
   box-shadow: none;
   transform: translateY(0);
+}
+.usuario {
+  margin: 2rem 7rem;
+  display: grid;
+  grid-template-columns: 33% 1fr;
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
+  height: fit-content;
+}
+.imgUser img {
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid white;
+}
+.info, .direccion {
+  color: white;
+}
+.direccion p {
+  line-height: 1.3em;
 }
