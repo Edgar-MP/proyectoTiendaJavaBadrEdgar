@@ -157,17 +157,19 @@
 	        <iframe src="${juego.trailer }"
 	            title="Trailer ${juego.titulo }" allowfullscreen></iframe>
 	    </div>
-	    <div class="containerProtagonistas">
-	        <h2>Protagonistas</h2>
-	        <div class="protas">
-		        <c:forEach var="personaje" items="${juego.personajes}" varStatus="loop">
-		        	<div class="prota">
-		                <img src="../${personaje.imagen}" alt="${personaje}" width="300" height="224">
-		                <p>${personaje}</p>
-		            </div>
-		        </c:forEach>
-	        </div>
-	    </div>
+	    <c:if test="${juego.personajes.size() != 0}">
+		    <div class="containerProtagonistas">
+		        <h2>Protagonistas</h2>
+		        <div class="protas">
+			        <c:forEach var="personaje" items="${juego.personajes}" varStatus="loop">
+			        	<div class="prota">
+			                <img src="../${personaje.imagen}" alt="${personaje}" width="300" height="224">
+			                <p>${personaje}</p>
+			            </div>
+			        </c:forEach>
+		        </div>
+		    </div>
+	    </c:if>
     </c:if>
     <c:if test="${juego == null}">
 	    <div class="pageContainer" id="maincontent" style="width: 80vw; height: 60vh;margin-top: 2rem;">
