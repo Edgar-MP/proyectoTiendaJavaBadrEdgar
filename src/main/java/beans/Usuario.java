@@ -139,7 +139,7 @@ public class Usuario {
 		this.passw = passw;
 	}
 
-	public boolean isAdmin() {
+	public boolean getAdmin() {
 		return admin;
 	}
 

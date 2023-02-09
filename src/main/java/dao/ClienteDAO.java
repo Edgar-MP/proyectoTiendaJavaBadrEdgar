@@ -142,8 +142,6 @@ public class ClienteDAO {
 		boolean guardado = false;
 		String sql = "INSERT INTO usuario(nombre, apellidos, descripcion, direccion, codigoPostal, municipio, provincia, pais, telefono, email, password, admin, id_imagen) "
 				+ "VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-		
-		System.out.println(u.getCp());
         try {
             Connection con = ds.getConnection();
             PreparedStatement st = con.prepareStatement(sql);
@@ -158,7 +156,12 @@ public class ClienteDAO {
           st.setString(9, u.getTlf());
           st.setString(10, u.getEmail());
           st.setString(11, u.getPassw());
-          st.setInt(12, 0);
+          if(u.getAdmin()==false) {
+        	  st.setInt(12, 0); 
+          }
+          else {
+        	  st.setInt(12, 1); 
+          }
           if(u.getImg()==null) {
         	  st.setInt(13, 1);
           }
