@@ -41,7 +41,6 @@ public class ClienteDAO {
             if (rs.next()) {
             	/*  img user*/
             	Imagen img = new Imagen(rs.getInt("idImagen"), rs.getString("ruta"));
-            	System.out.print(img);
             	/* Usuario */
             	user = new Usuario();
             	user.setIdUser(rs.getInt("idUsuario"));
@@ -60,6 +59,43 @@ public class ClienteDAO {
             }
             rs.close();
             st.close();
+            con.close();
+		} catch (SQLException e1) {
+			e1.printStackTrace();
+		}
+		return user;
+	}
+	
+	/* Método que devuelve un cliente pasandole el nombre y la contraseña*/
+	public Usuario buscaClientePorID(int idUsuario) {
+		String sql = "SELECT * FROM usuario, imagen WHERE usuario.idUsuario = ? AND usuario.id_imagen = imagen.idImagen";
+		Usuario user = null;
+		try {
+			con = ds.getConnection();
+			PreparedStatement ps = con.prepareStatement(sql);
+			ps.setInt(1, idUsuario);
+			ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+            	/*  img user*/
+            	Imagen img = new Imagen(rs.getInt("idImagen"), rs.getString("ruta"));
+            	/* Usuario */
+            	user = new Usuario();
+            	user.setIdUser(rs.getInt("idUsuario"));
+            	user.setNombre(rs.getString("nombre"));
+            	user.setApellidos(rs.getString("apellidos"));
+            	user.setDesc(rs.getString("descripcion"));
+            	user.setDir(rs.getString("direccion"));
+            	user.setCp(rs.getString("codigoPostal"));
+            	user.setProvincia(rs.getString("municipio"));
+            	user.setPais(rs.getString("pais"));
+            	user.setTlf(rs.getString("telefono"));
+            	user.setEmail(rs.getString("email"));
+            	user.setPassw(rs.getString("password"));
+            	user.setAdmin(rs.getBoolean("admin"));
+            	user.setImg(img);
+            }
+            rs.close();
+            ps.close();
             con.close();
 		} catch (SQLException e1) {
 			e1.printStackTrace();
