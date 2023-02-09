@@ -107,7 +107,7 @@
 				    <h3>Contacto</h3>
 				    <p>
 				      <b>eMail:</b> ${datosUsuario.email } <br>
-				      <b>Teléfono:</b> ${datosUsuario.tlf }9<br>
+				      <b>Teléfono:</b> ${datosUsuario.tlf }<br>
 				      <b>Calle:</b> ${datosUsuario.dir }<br>
 				      <b>Provincia:</b> ${datosUsuario.provincia }<br>
 				      <b>Municipio:</b> ${datosUsuario.municipio }<br>
