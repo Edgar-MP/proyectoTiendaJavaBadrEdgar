@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import beans.Usuario;
 import dao.ClienteDAO;
 
 /**
@@ -71,7 +72,7 @@ public class ServletRegistro extends HttpServlet {
 			response.sendRedirect("html/registro.jsp?error=CV");
 		}
 		else{
-			
+//			Usuario u= new Usuario(0, null, codigoPostal, apellidos, descripcion, direccion, telefono, municipio, provincia, pais, descripcion, email, password, false);
 		}
 		
 	}

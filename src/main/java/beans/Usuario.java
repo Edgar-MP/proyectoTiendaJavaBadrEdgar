@@ -7,7 +7,7 @@ public class Usuario {
 	private boolean admin;
 	
 	public Usuario(int idUser, Imagen img, String nombre, String apellidos, String desc, String dir, String cp,
-			String municipio, String provincia, String pais, String tlf, String email, String passw, boolean admin) {
+			String municipio, String provincia, String pais, String tlf, String email, String passw, int admin) {
 		this.idUser = idUser;
 		this.img = img;
 		this.nombre = nombre;
@@ -21,7 +21,13 @@ public class Usuario {
 		this.tlf = tlf;
 		this.email = email;
 		this.passw = passw;
-		this.admin = admin;
+		if(admin==1) {
+			this.admin = true;
+		}
+		else {
+			this.admin = false;
+		}
+		
 	}
 	
 	public Usuario() {
