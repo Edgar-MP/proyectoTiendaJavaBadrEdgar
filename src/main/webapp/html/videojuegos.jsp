@@ -74,7 +74,7 @@
 	                    </li>
 	                    <c:if test="${usuario.admin == true}">
 		                    <li>
-		                       	<a id="nintendo" href="login.jsp">Listado de usuarios</a>
+		                       	<a id="nintendo" href="listadoDeUsuarios.jsp">Listado de usuarios</a>
 		                    </li>
 	                    </c:if>
                     </c:if>
