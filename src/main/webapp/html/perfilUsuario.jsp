@@ -90,7 +90,7 @@
 		    
 		    	<div class="usuario">
 				  <div class="imgUser">
-				    <img src="https://static.wikia.nocookie.net/unchartedpedia/images/e/e1/VictorSullivan-U4.png/revision/latest?cb=20200425003824&path-prefix=es" width="250" height="250">
+				    <img src="../${datosUsuario.img }" width="250" height="250">
 				  </div>
 				  <div class="info">
 				    <h2>${datosUsuario.nombre }, ${datosUsuario.apellidos } 👋</h2>
