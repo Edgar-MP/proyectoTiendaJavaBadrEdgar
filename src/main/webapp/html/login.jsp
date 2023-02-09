@@ -64,6 +64,11 @@
 	                    <li>
 	                    	<a id="xbox" href="perfilUsuario.jsp">Perfil de usuario</a>
 	                    </li>
+	                    <c:if test="${usuario.admin == true}">
+		                    <li>
+		                       	<a id="nintendo" href="login.jsp">Listado de usuarios</a>
+		                    </li>
+	                    </c:if>
                     </c:if>
                 </ul>
             </nav>

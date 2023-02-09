@@ -24,7 +24,7 @@
 			    <!-- favicon -->
 			    <link rel="shortcut icon" sizes="any" href="../assets/img/favicon/favicon.ico">
 			    <!-- Titulo -->
-			    <title>Inicio | Gaming for Gamers</title>
+			    <title>Listado de Usuarios | Gaming for Gamers</title>
 			    <!-- CSS -->
 			    <link rel="stylesheet" href="../assets/css/style.css" media="screen">
 			</head>
@@ -65,11 +65,16 @@
 			                    </c:if>
 								<c:if test="${usuario != null}">
 				                    <li>
-				                       	<a id="play" href="../ServletLogin?cerrarSesion=html/login.jsp">Cerrar Sesión</a>
+				                       	<a id="play" href="../ServletLogin?cerrarSesion=html/listadoDeUsuarios.jsp">Cerrar Sesión</a>
 				                    </li>
 				                    <li>
 				                    	<a id="xbox" href="perfilUsuario.jsp">Perfil de usuario</a>
 				                    </li>
+				                    <c:if test="${usuario.admin == true}">
+					                    <li>
+					                       	<a id="nintendo" href="login.jsp">Listado de usuarios</a>
+					                    </li>
+				                    </c:if>
 			                    </c:if>
 			                </ul>
 			            </nav>

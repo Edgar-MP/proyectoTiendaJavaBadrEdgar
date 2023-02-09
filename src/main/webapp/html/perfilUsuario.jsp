@@ -59,7 +59,7 @@
                     </c:if>
 					<c:if test="${usuario != null}">
 	                    <li>
-	                       	<a id="play" href="../ServletLogin?cerrarSesion=html/plantilla.jsp">Cerrar Sesión</a>
+	                       	<a id="play" href="../ServletLogin?cerrarSesion=html/perfilUsuario.jsp">Cerrar Sesión</a>
 	                    </li>
 	                    <li>
 	                    	<a id="xbox" href="perfilUsuario.jsp">Perfil de usuario</a>
