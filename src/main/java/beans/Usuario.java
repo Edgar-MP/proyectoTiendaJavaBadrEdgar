@@ -8,6 +8,7 @@ public class Usuario {
 	
 	public Usuario(int idUser, Imagen img, String nombre, String apellidos, String desc, String dir, String cp,
 			String municipio, String provincia, String pais, String tlf, String email, String passw, int admin) {
+		
 		this.idUser = idUser;
 		this.img = img;
 		this.nombre = nombre;

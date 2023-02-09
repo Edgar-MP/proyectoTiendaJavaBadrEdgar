@@ -86,11 +86,15 @@
 	    	<input type="hidden" id="todoOk" name="todoOk" value="todoOk">
 	        	<c:if test="${param.error!=null}">
 	        	<!-- estilo mal hecho falta retocar-->
-			    	<p>Campos Vacios</p>
+			    	<script>
+					    alert("Campos Vacios");
+					</script>
 	       		</c:if>
 	       		<c:if test="${param.usuario!=null}">
 	        	<!-- estilo mal hecho falta retocar-->
-			    	<p>Usuario existente</p>
+	        		<script>
+					    alert("Usuario existente");
+					</script>
 	       		</c:if>
 	        	<!-- Nombre de usuario -->
 	        	<div class="form-input">
@@ -118,7 +122,7 @@
 	            
 	            <!-- Código Postal -->
 	            <div class="form-input">
-	                <label for="direccion">Dirección:</label>
+	                <label for="codigoPostal">Codigo Postal:</label>
 	                <input type="text" name="codigoPostal" id="codigoPostal" placeholder="Código Postal" aria-labelledby="Código Postal">
 	            </div>
 	            

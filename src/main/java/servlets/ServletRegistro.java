@@ -72,9 +72,10 @@ public class ServletRegistro extends HttpServlet {
 			response.sendRedirect("html/registro.jsp?error=CV");
 		}
 		else{
-//			Usuario u= new Usuario(0, null, codigoPostal, apellidos, descripcion, direccion, telefono, municipio, provincia, pais, descripcion, email, password, false);
+			Usuario u= new Usuario(0, null, usuario, apellidos, descripcion, direccion, codigoPostal, municipio,provincia, pais, telefono,email,password, 0);
+			cd.guardarCliente(u);
+			response.sendRedirect("index.jsp");
 		}
-		
 	}
 
 }

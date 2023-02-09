@@ -104,8 +104,10 @@ public class ClienteDAO {
 	//Método para introducir un nuevo usuario en la base de datos
 	public boolean guardarCliente(Usuario u) {
 		boolean guardado = false;
-		String sql = "INSERT INTO clientes(nombre, apellidos, descripcion, direccion, codigoPostal, municipio, provincia, pais, telefono, email, password, admin, id_imagen) "
-				+ "VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+		String sql = "INSERT INTO usuario(nombre, apellidos, descripcion, direccion, codigoPostal, municipio, provincia, pais, telefono, email, password, admin, id_imagen) "
+				+ "VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+		
+		System.out.println(u.getCp());
         try {
             Connection con = ds.getConnection();
             PreparedStatement st = con.prepareStatement(sql);
@@ -121,7 +123,12 @@ public class ClienteDAO {
           st.setString(10, u.getEmail());
           st.setString(11, u.getPassw());
           st.setInt(12, 0);
-          st.setInt(13, u.getImg().getIdImagen());
+          if(u.getImg()==null) {
+        	  st.setInt(13, 1);
+          }
+          else {
+        	  st.setInt(13, u.getImg().getIdImagen());
+          }
           st.executeUpdate();
           guardado = true;
             
