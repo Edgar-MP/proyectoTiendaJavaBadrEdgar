@@ -146,6 +146,16 @@ public class Usuario {
 	public void setAdmin(boolean admin) {
 		this.admin = admin;
 	}
+	
+	public void setAdminInt(int admin) {
+		if(admin==1) {
+			this.admin = true;
+		}
+		else {
+			this.admin = false;
+		}
+		
+	}
 
 	@Override
 	public String toString() {

@@ -1,12 +1,18 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<c:if test="${usuario == null}">  
+	<c:redirect url = "../index.jsp"/>
+</c:if>
 <c:if test="${usuario != null}">
 	<c:if test="${!usuario.admin}">
 		<c:redirect url = "../index.jsp"/>
 	</c:if>
 	<c:if test="${usuario.admin}">
-		<c:if test="${param.listaUsuarios != null}">
+		<c:if test="${usuarios == null}">
+			<c:redirect url = "../ServletListadoUsuarios?obtenerUsuarios=si"/>
+		</c:if>
+		<c:if test="${usuarios != null}">
 			<!DOCTYPE html>
 			<!-- Idioma -->
 			<html lang="es" data-uw-w-loader="">
@@ -68,7 +74,7 @@
 				                       	<a id="play" href="../ServletLogin?cerrarSesion=html/listadoDeUsuarios.jsp">Cerrar Sesión</a>
 				                    </li>
 				                    <li>
-				                    	<a id="xbox" href="perfilUsuario.jsp">Perfil de usuario</a>
+				                    	<a id="xbox" href="perfilUsuario.jsp?idUsuario=${usuario.idUser}">Perfil de usuario</a>
 				                    </li>
 				                    <c:if test="${usuario.admin == true}">
 					                    <li>
@@ -92,8 +98,31 @@
 			        </div>
 			    </header>
 			    <div class="pageContainer" id="maincontent">
-			    
-			    
+			    <table>
+			    	<tr>
+				    	<th>Imagen</th>
+				    	<th>ID</th>
+				    	<th>Nombre</th>
+				    	<th>Es admin?</th>
+				    	<th>Mas detalles</th>
+			    	</tr>
+			    	<c:forEach items="${usuarios}" var="user">
+                    	<tr>
+					    	<td><img src="../${user.getImg().getRuta()}" alt="imagen de usuario" width="250"></td>
+					    	<td>${user.idUser}</td>
+					    	<td>${user.nombre}</td>
+					    	<td>
+						    	<c:if test="${user.admin==true}">
+						    		Es admin
+						    	</c:if>
+						    	<c:if test="${user.admin==false}">
+						    		No es admin
+						    	</c:if>
+					    	</td>
+					    	<td><a href="perfilUsuario.jsp?idUsuario=${user.idUser}">Mas detalles</a></td>
+				    	</tr>
+               		</c:forEach>
+               	</table>	
 			    </div>
 			    <footer>
 			        <img src="../assets/img/logo/logoBlancoLogitech.svg" alt="Logo de Gaming4Gamers" width="150">
@@ -115,10 +144,7 @@
 			    <script src="https://kit.fontawesome.com/a5ac13e346.js" crossorigin="anonymous"></script>
 			</body>
 			</html>
-		</c:if>
-		<c:if test="${param.listaUsuarios == null}">
-			<c:redirect url = "../servletListadoUsuarios?obtenerUsuarios"/>
+			<c:remove var="listaUsuarios" scope="session"/>
 		</c:if>
 	</c:if>
 </c:if>
-

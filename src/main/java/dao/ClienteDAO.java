@@ -5,9 +5,11 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 
 import javax.servlet.ServletException;
 import javax.sql.DataSource;
+import javax.websocket.Session;
 
 import beans.Imagen;
 import beans.Usuario;
@@ -178,6 +180,36 @@ public class ClienteDAO {
         }
 		
 		return guardado;
+	}
+	// Metodo que devuelve todos los usuarios
+	public ArrayList<Usuario> listarUsuarios() {
+		ArrayList<Usuario> usuarios= new ArrayList<Usuario>();
+		String sql = "select usuario.idUsuario, usuario.nombre, usuario.admin, imagen.ruta from usuario, imagen where imagen.idImagen=usuario.id_imagen;";
+		try {
+			con = ds.getConnection();
+            Statement st = con.createStatement();
+            ResultSet rs = st.executeQuery(sql);
+            while(rs.next()){
+            	int idUsuario=rs.getInt("usuario.idUsuario");
+            	String nombre=rs.getString("usuario.nombre");
+            	int admin= rs.getInt("usuario.admin");
+            	String ruta=rs.getString("imagen.ruta");
+            	Imagen img= new Imagen(0, ruta);
+            	Usuario u= new Usuario();
+            	u.setAdminInt(admin);
+            	u.setNombre(nombre);
+            	u.setIdUser(idUsuario);
+            	u.setImg(img);
+            	usuarios.add(u);
+            }
+            
+            rs.close();
+            st.close();
+            con.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} 
+		return usuarios;
 	}
 	
 	/* Método que devuelve si existe un cliente pasandole el nombre */
