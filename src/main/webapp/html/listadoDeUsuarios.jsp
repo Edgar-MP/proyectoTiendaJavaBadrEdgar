@@ -4,6 +4,9 @@
 <c:if test="${usuario == null}">  
 	<c:redirect url = "../index.jsp"/>
 </c:if>
+<c:if test="${datosUsuario != null}">
+	<c:remove var="datosUsuario" scope="session" />
+</c:if>
 <c:if test="${usuario != null}">
 	<c:if test="${!usuario.admin}">
 		<c:redirect url = "../index.jsp"/>

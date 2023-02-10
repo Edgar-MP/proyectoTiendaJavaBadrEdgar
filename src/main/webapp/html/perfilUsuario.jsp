@@ -163,4 +163,4 @@
 		</c:if>
 	</c:if>
 </c:if>
-<c:remove var="datosUsuario" scope="session" />
+
