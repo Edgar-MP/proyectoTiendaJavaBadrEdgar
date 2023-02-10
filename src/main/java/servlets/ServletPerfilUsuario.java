@@ -32,7 +32,6 @@ public class ServletPerfilUsuario extends HttpServlet {
     HttpServletRequest request,
     HttpServletResponse response
   ) throws ServletException, IOException {
-    System.out.print("aaaa");
     if (request.getParameter("idUser") != null) {
       ClienteDAO cDao = new ClienteDAO();
       int idUser = Integer.parseInt(request.getParameter("idUser"));

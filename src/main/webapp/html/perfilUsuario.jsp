@@ -145,7 +145,6 @@
 								<th>Total</th>
 								<th>Ver detalles</th>
 							</tr>
-							<% System.out.print(session.getAttribute("comprasUsuario")); %>
 								<c:forEach items="${comprasUsuario}" var="compra">
 									<tr>
 										<td>${compra.idCompra}</td>

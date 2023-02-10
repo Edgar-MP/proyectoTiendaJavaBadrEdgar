@@ -28,7 +28,6 @@ public class ServletListadoUsuarios extends HttpServlet {
     if (request.getParameter("obtenerUsuarios") == null) {
       response.sendRedirect("html/listadoDeUsuarios.jsp");
     } else {
-      System.out.println("entra");
       ClienteDAO cd = new ClienteDAO();
       ArrayList<Usuario> usuarios = cd.listarUsuarios();
       request.getSession().setAttribute("usuarios", usuarios);
