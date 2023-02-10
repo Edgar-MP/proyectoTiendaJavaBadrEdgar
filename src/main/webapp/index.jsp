@@ -4,6 +4,12 @@
     <c:if test="${juegos == null}">
 		<c:redirect url="ServletInicio"/>
     </c:if>
+    <c:if test="${Z2FycmlMb3ZlVQ != null}">
+		<script>
+			alert("El carrito se ha vaciado correctamente");
+		</script>
+    </c:if>
+    
 <!DOCTYPE html>
 <!-- Idioma -->
 <html lang="es" data-uw-w-loader="">
@@ -36,6 +42,11 @@
         <div id="navigation">
             <div id="btnMenu">
                 <img src="assets/img/icons/menu.svg" alt="Abrir menú de navegación">
+            </div>
+            <div id="btnCarrito">
+            	<a href="html/carrito.jsp">
+            	<i class="fa-sharp fa-solid fa-cart-shopping fa-2xl"></i>
+            	</a>
             </div>
         </div>
         <div id='menu'>
@@ -115,7 +126,7 @@
 	         	<div>
 	                <a href="html/videojuegos.jsp?idJuego=${juego.idJuego }">
 	                    <picture>
-	                        <source media="(max-width: 424px)" srcset="${juego.imgCover.ruta }">
+	                        <source media="(max-width: 424px)" srcset="${juego.imgCoverMobile.ruta }">
 	                        <source media="(min-width: 600px)" srcset="${juego.imgCover.ruta }">
 	                        <img src="${juego.imgCoverMobile.ruta }"
 	                            alt="Cover del videojuego ${juego.titulo }">

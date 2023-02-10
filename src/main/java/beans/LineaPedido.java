@@ -52,6 +52,12 @@ public class LineaPedido {
 	public void setCompr(Compra compr) {
 		this.compr = compr;
 	}
+
+	@Override
+	public String toString() {
+		return "LineaPedido [idLineaPedido=" + idLineaPedido + ", cantidad=" + cantidad + ", juego=" + juego
+				+ ", compr=" + compr + "]";
+	}
 	
 	
 }

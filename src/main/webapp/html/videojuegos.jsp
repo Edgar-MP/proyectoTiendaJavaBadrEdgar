@@ -38,7 +38,6 @@
 	 <c:if test="${param.bG1kc2hvdw != null}">
 		<script>
 			alert("Juego añadido al carrito");
-			window.location.href = "./videojuegos.jsp?aWxsb2p1YW4gTWFuZGE";
 		</script>
 	</c:if>
 </head>
@@ -52,6 +51,11 @@
         <div id="navigation">
             <div id="btnMenu">
                 <img src="../assets/img/icons/menu.svg" alt="Abrir menú de navegación">
+            </div>
+            <div id="btnCarrito">
+            	<a href="carrito.jsp">
+            	<i class="fa-sharp fa-solid fa-cart-shopping fa-2xl"></i>
+            	</a>
             </div>
         </div>
         <div id='menu'>

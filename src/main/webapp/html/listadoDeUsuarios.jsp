@@ -45,6 +45,11 @@
 			            <div id="btnMenu">
 			                <img src="../assets/img/icons/menu.svg" alt="Abrir menú de navegación">
 			            </div>
+			            <div id="btnCarrito">
+			            	<a href="carrito.jsp">
+			            		<i class="fa-sharp fa-solid fa-cart-shopping fa-2xl"></i>
+			            	</a>
+			            </div>
 			        </div>
 			        <div id='menu'>
 			            <div class="logo">
@@ -98,35 +103,35 @@
 			        </div>
 			    </header>
 			    <div class="pageContainer" id="maincontent">
-			    <table class="perfilesUsuarios">
-					<tr>
-						<th>Imagen</th>
-						<th>ID</th>
-						<th>Nombre</th>
-						<th>Administrador</th>
-						<th>Perfil de usuario</th>
-					</tr>
-			    	<c:forEach items="${usuarios}" var="user">
+				    <table class="perfilesUsuarios">
 						<tr>
-							<td>
-								<img src="../${user.getImg().getRuta()}" alt="imagen de usuario" width="250">
-							</td>
-							<td>${user.idUser}</td>
-					    	<td>${user.nombre}, ${user.apellidos}</td>
-							<td>
-						    	<c:if test="${user.admin==true}">
-						    		Si
-						    	</c:if>
-						    	<c:if test="${user.admin==false}">
-						    		No
-						    	</c:if>
-					    	</td>
-							<td>
-								<a href="perfilUsuario.jsp?idUsuario=${user.idUser}">Acceder</a>
-							</td>
+							<th>Imagen</th>
+							<th>ID</th>
+							<th>Nombre</th>
+							<th>Administrador</th>
+							<th>Perfil de usuario</th>
 						</tr>
-               		</c:forEach>
-               	</table>	
+				    	<c:forEach items="${usuarios}" var="user">
+							<tr>
+								<td>
+									<img src="../${user.getImg().getRuta()}" alt="imagen de usuario" width="250">
+								</td>
+								<td>${user.idUser}</td>
+						    	<td>${user.nombre}, ${user.apellidos}</td>
+								<td>
+							    	<c:if test="${user.admin==true}">
+							    		Si
+							    	</c:if>
+							    	<c:if test="${user.admin==false}">
+							    		No
+							    	</c:if>
+						    	</td>
+								<td>
+									<a href="perfilUsuario.jsp?idUsuario=${user.idUser}">Acceder</a>
+								</td>
+							</tr>
+	               		</c:forEach>
+	               	</table>	
 			    </div>
 			    <footer>
 			        <img src="../assets/img/logo/logoBlancoLogitech.svg" alt="Logo de Gaming4Gamers" width="150">

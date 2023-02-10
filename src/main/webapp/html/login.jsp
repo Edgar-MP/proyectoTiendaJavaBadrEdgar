@@ -33,6 +33,11 @@
             <div id="btnMenu">
                 <img src="../assets/img/icons/menu.svg" alt="Abrir menú de navegación">
             </div>
+            <div id="btnCarrito">
+            	<a href="carrito.jsp">
+            	<i class="fa-sharp fa-solid fa-cart-shopping fa-2xl"></i>
+            	</a>
+            </div>
         </div>
         <div id='menu'>
             <div class="logo">

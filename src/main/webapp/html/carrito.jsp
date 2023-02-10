@@ -24,7 +24,7 @@
 </head>
 <body>
 <header>
-        <a class="skip-link" href="#maincontent">Ir al contenido principal</a>
+       <a class="skip-link" href="#maincontent">Ir al contenido principal</a>
         <a href="../index.jsp" id="branding">
             <h1>Gaming4Gamers</h1>
             <img src="../assets/img/logo/logoBlancoLogitech.svg" alt="Logo de gaming4gamers" width="150">
@@ -92,6 +92,57 @@
     </header>
     <div class="pageContainer" id="maincontent">
     
+	    <c:if test="${carrito == null || carrito.size() == 0}">
+	    
+	    </c:if>
+	    <c:if test="${carrito != null && carrito.size() != 0}">
+	    	<table class="perfilesUsuarios">
+	    		<form method="post">
+					<tr>
+						<th colspan="2">Producto</th>
+						<th>Cantidad</th>
+						<th>Precio Unitario</th>
+						<th>Precio Total</th>
+						<th colspan="2">Acción</th>
+					</tr>
+					<c:set var="precioTotal" value="${0}" />
+			    	<c:forEach items="${carrito}" var="linea">
+			    	
+						<tr>
+							<td>
+								<img src="../${linea.value.juego.imgCover}"/>
+							</td>
+							<td>${linea.value.juego.titulo}</td>
+							<td>
+								<input name="cantidad${linea.key}" type="number" min="0" step="1" value="${linea.value.cantidad}">
+							</td>
+							<td>${linea.value.juego.precio} €</td>
+							<td>${linea.value.juego.precio * linea.value.cantidad} €</td>
+							<td>
+								<label>
+									<input type="submit" name="cambiarCantidad" value="Cambiar Cantidad" 
+										formaction="../ServletCarritoCompra?idJuego=${linea.key}"/>
+								</label>
+							</td>
+							<td>
+								<label>
+									<input type="submit" name="eliminarTodaLaCantidad" value="Quitar producto" 
+										formaction="../ServletCarritoCompra?idJuego=${linea.key}"/>
+								</label>
+							</td>
+						</tr>
+						<c:set var="precioTotal" value="${precioTotal + (linea.value.juego.precio * linea.value.cantidad)}" />
+		       		</c:forEach>
+		       		<tr>
+		       			<td colspan="4">TOTAL:   <span>${precioTotal } €</span></td>
+		       			<td>
+		       				<input type="submit" name="vaciarCarrito" value="Vaciar carrito" 
+								formaction="../ServletCarritoCompra"/>
+		       			</td>
+		       		</tr>
+	       		</form>
+	       	</table>	
+	    </c:if>
     
     </div>
     <footer>
@@ -111,6 +162,6 @@
 
     <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js'></script>
     <script src="../assets/js/script.min.js"></script>
-    <script src="https://kit.fontawesome.com/a5ac13e346.js" crossorigin="anonymous"></script>
+	<script src="https://kit.fontawesome.com/a5ac13e346.js" crossorigin="anonymous"></script>
 </body>
 </html>

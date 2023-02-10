@@ -26,28 +26,65 @@ public class ServletCarritoCompra extends HttpServlet {
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		if (request.getParameter("idJuego") != null && request.getParameter("idJuego") != "") {
-			int idJuego = Integer.parseInt(request.getParameter("idJuego"));
-			if (estaLaSesionIniciada(request)) {
-				HashMap<Integer, LineaPedido> carrito = obtenerCarritoDeSesion(request);
-				if (carrito == null)
-					carrito = new HashMap<Integer, LineaPedido>();
-				LineaPedido lp = null;
-				if (carrito.containsKey(idJuego)) {
-					lp = carrito.get(idJuego);
-				} else {
-					JuegosDAO jDao = new JuegosDAO();
-					VideoJuego juego = jDao.obtenerJuegoPorId(idJuego);
-					lp = new LineaPedido(1, juego);
-				}
-				carrito.put(idJuego, lp);
-				request.getSession().setAttribute("carrito", lp);
-				response.sendRedirect("ServletJuego?idJuego="+idJuego+"&aniadio");
-			} else
-				response.sendRedirect("ServletJuego?idJuego="+idJuego+"&noSession");
+		if (request.getParameter("vaciarCarrito") != null ) {
+			request.getSession().removeAttribute("carrito");
+			response.sendRedirect("index.jsp?Z2FycmlMb3ZlVQ");
 		} else {
-			response.sendRedirect("index.jsp");
+			if (request.getParameter("cambiarCantidad") != null) {
+				HashMap<Integer, LineaPedido> carrito = obtenerCarritoDeSesion(request);
+				int idJuego = Integer.parseInt(request.getParameter("idJuego"));
+				int nuevaCantidad = Integer.parseInt(request.getParameter("cantidad"+idJuego));
+				if (nuevaCantidad != 0) {
+					LineaPedido lp = carrito.get(idJuego);
+					lp.setCantidad(nuevaCantidad);
+					carrito.put(idJuego, lp);
+				} else {
+					carrito.remove(idJuego);
+				}
+				request.getSession().setAttribute("carrito", carrito);
+				response.sendRedirect("html/carrito.jsp");
+			} else {
+				if (request.getParameter("eliminarTodaLaCantidad") != null) {
+					HashMap<Integer, LineaPedido> carrito = obtenerCarritoDeSesion(request);
+					int idJuego = Integer.parseInt(request.getParameter("idJuego"));
+					carrito.remove(idJuego);
+					request.getSession().setAttribute("carrito", carrito);
+					response.sendRedirect("html/carrito.jsp");
+				} else {
+					if (request.getParameter("idJuego") != null && request.getParameter("idJuego") != "") {
+						/* Obtener juego */
+						int idJuego = Integer.parseInt(request.getParameter("idJuego"));
+						JuegosDAO jDao = new JuegosDAO();
+						VideoJuego juego = jDao.obtenerJuegoPorId(idJuego);
+						
+						if (estaLaSesionIniciada(request)) {
+							HashMap<Integer, LineaPedido> carrito = obtenerCarritoDeSesion(request);
+							LineaPedido lp = null;
+							if (carrito == null) {
+								carrito = new HashMap<Integer, LineaPedido>();
+								lp = new LineaPedido(1, juego);
+								carrito.put(idJuego, lp);
+							} else {
+								if (carrito.containsKey(idJuego)) {
+									lp = carrito.get(idJuego);
+									lp.setCantidad(lp.getCantidad()+1);
+								} else {
+									lp = new LineaPedido(1, juego);
+								}
+								carrito.put(idJuego, lp);
+							}
+							request.getSession().setAttribute("carrito", carrito);
+							response.sendRedirect("ServletJuego?idJuego=" + idJuego + "&aniadido");
+						} else
+							response.sendRedirect("ServletJuego?idJuego="+idJuego+"&noSession");
+					} else {
+						response.sendRedirect("index.jsp");
+					}
+				}
+			}
 		}
+		
+		
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
