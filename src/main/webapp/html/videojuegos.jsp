@@ -29,6 +29,12 @@
     </c:if>
     <!-- CSS -->
     <link rel="stylesheet" href="../assets/css/style.css" media="screen">
+    <c:if test="${param.w4Fsb1ByZXNpZGVudGU != null}">
+		<script>
+			alert("Debes iniciar sesión para poder añadir al carrito");
+			window.location.href = "./videojuegos.jsp?aWxsb2p1YW4gTWFuZGE";
+		</script>
+	</c:if>
 </head>
 <body>
 <header>
@@ -150,7 +156,7 @@
 	        </div>
 	    </div>
 	    <div class="comprar">
-	    	<a href="" class="button-27">Añadir al carrito</a>
+	    	<a href="../ServletCarritoCompra?idJuego=${juego.idJuego }" class="button-27">Añadir al carrito</a>
 	    </div>
 	    <div class="trailerJuego">
 	        <h2>Trailer</h2>

@@ -12,6 +12,12 @@ public class LineaPedido {
 		this.compr = compr;
 	}
 	
+	public LineaPedido(int idLineaPedido, int cantidad, VideoJuego juego) {
+		this.idLineaPedido = idLineaPedido;
+		this.cantidad = cantidad;
+		this.juego = juego;
+	}
+	
 	public LineaPedido() {
 		
 	}

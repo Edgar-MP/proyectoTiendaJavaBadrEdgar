@@ -98,29 +98,33 @@
 			        </div>
 			    </header>
 			    <div class="pageContainer" id="maincontent">
-			    <table>
-			    	<tr>
-				    	<th>Imagen</th>
-				    	<th>ID</th>
-				    	<th>Nombre</th>
-				    	<th>Es admin?</th>
-				    	<th>Mas detalles</th>
-			    	</tr>
+			    <table class="perfilesUsuarios">
+					<tr>
+						<th>Imagen</th>
+						<th>ID</th>
+						<th>Nombre</th>
+						<th>Administrador</th>
+						<th>Perfil de usuario</th>
+					</tr>
 			    	<c:forEach items="${usuarios}" var="user">
-                    	<tr>
-					    	<td><img src="../${user.getImg().getRuta()}" alt="imagen de usuario" width="250"></td>
-					    	<td>${user.idUser}</td>
-					    	<td>${user.nombre}</td>
-					    	<td>
+						<tr>
+							<td>
+								<img src="../${user.getImg().getRuta()}" alt="imagen de usuario" width="250">
+							</td>
+							<td>${user.idUser}</td>
+					    	<td>${user.nombre}, ${user.apellidos}</td>
+							<td>
 						    	<c:if test="${user.admin==true}">
-						    		Es admin
+						    		Si
 						    	</c:if>
 						    	<c:if test="${user.admin==false}">
-						    		No es admin
+						    		No
 						    	</c:if>
 					    	</td>
-					    	<td><a href="perfilUsuario.jsp?idUsuario=${user.idUser}">Mas detalles</a></td>
-				    	</tr>
+							<td>
+								<a href="perfilUsuario.jsp?idUsuario=${user.idUser}">Acceder</a>
+							</td>
+						</tr>
                		</c:forEach>
                	</table>	
 			    </div>

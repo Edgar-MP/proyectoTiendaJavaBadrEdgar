@@ -1240,3 +1240,39 @@ footer {
 .direccion p {
   line-height: 1.3em;
 }
+/* listado usuarios*/
+body {
+  background-color: #0f0e17;
+}
+
+.perfilesUsuarios {
+  color: white;
+  border-collapse: collapse;
+  width: 100%
+}
+
+.perfilesUsuarios tr {
+  border-bottom: 2px solid rgb(24, 24, 24);
+}
+.perfilesUsuarios tr:hover {
+  background-color: rgba(52, 51, 51, 0.8);
+}
+.perfilesUsuarios th,
+.perfilesUsuarios td {
+  width: 20%;
+  padding: 10px 10px;
+  text-align: center;
+}
+
+.perfilesUsuarios td img {
+  width: 100px;
+  border-radius: 10%;
+  border: 3px solid white;
+}
+.perfilesUsuarios td a {
+  color: white;
+  transition: color .2s;
+}
+.perfilesUsuarios td a:hover {
+  color: rgba(255, 255, 255, 0.627);
+}

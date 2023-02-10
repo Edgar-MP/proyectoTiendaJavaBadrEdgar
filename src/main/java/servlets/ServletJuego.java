@@ -31,7 +31,10 @@ public class ServletJuego extends HttpServlet {
 		VideoJuego juego = jDao.obtenerJuegoPorId(Integer.parseInt(request.getParameter("idJuego")));
 		if (juego != null) {
 			request.getSession().setAttribute("juego", juego);
-			response.sendRedirect("html/videojuegos.jsp?aWxsb2p1YW4gTWFuZGE");
+			if (request.getParameter("noSession") == null)
+				response.sendRedirect("html/videojuegos.jsp?aWxsb2p1YW4gTWFuZGE");
+			else 
+				response.sendRedirect("html/videojuegos.jsp?aWxsb2p1YW4gTWFuZGE&w4Fsb1ByZXNpZGVudGU");
 		} else {
 			response.sendRedirect("index.jsp");
 		}

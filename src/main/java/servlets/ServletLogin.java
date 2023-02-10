@@ -34,6 +34,9 @@ public class ServletLogin extends HttpServlet {
 		
 		if (request.getParameter("cerrarSesion") != null) {
 			request.getSession().removeAttribute("usuario");
+			if (request.getSession().getAttribute("carrito") != null) {
+				request.getSession().removeAttribute("carrito");
+			}
 			response.sendRedirect(request.getParameter("cerrarSesion"));
 		}
 	}

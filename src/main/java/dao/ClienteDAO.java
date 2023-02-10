@@ -196,7 +196,7 @@ public class ClienteDAO {
 	// Metodo que devuelve todos los usuarios
 	public ArrayList<Usuario> listarUsuarios() {
 		ArrayList<Usuario> usuarios= new ArrayList<Usuario>();
-		String sql = "select usuario.idUsuario, usuario.nombre, usuario.admin, imagen.ruta from usuario, imagen where imagen.idImagen=usuario.id_imagen;";
+		String sql = "select usuario.idUsuario, usuario.nombre, usuario.apellidos, usuario.admin, imagen.ruta from usuario, imagen where imagen.idImagen=usuario.id_imagen;";
 		try {
 			con = ds.getConnection();
             Statement st = con.createStatement();
@@ -204,6 +204,7 @@ public class ClienteDAO {
             while(rs.next()){
             	int idUsuario=rs.getInt("usuario.idUsuario");
             	String nombre=capitalize(rs.getString("usuario.nombre"));
+            	String apellidos=capitalize(rs.getString("usuario.apellidos"));
             	int admin= rs.getInt("usuario.admin");
             	String ruta=rs.getString("imagen.ruta");
             	Imagen img= new Imagen(0, ruta);
@@ -211,6 +212,7 @@ public class ClienteDAO {
             	u.setAdminInt(admin);
             	u.setNombre(nombre);
             	u.setIdUser(idUsuario);
+            	u.setApellidos(apellidos);
             	u.setImg(img);
             	usuarios.add(u);
             }
