@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import beans.LineaPedido;
 import beans.VideoJuego;
+import dao.DetallesCompraDAO;
 import dao.JuegosDAO;
 
 
@@ -22,7 +23,15 @@ public class ServletDetallesCompra extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+		if(request.getParameter("id")!=null) {
+			DetallesCompraDAO dc= new DetallesCompraDAO();
+			Integer id=Integer.valueOf(request.getParameter("id"));
+			request.getSession().setAttribute("lineasPedido", dc.obtenerLineasDePedidoPorId(id));
+			response.sendRedirect("html/detallesCompra.jsp");
+		}
+		else {
+			response.sendRedirect("index.jsp");
+		}
 	}
 
 }

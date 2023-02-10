@@ -98,54 +98,35 @@
         </div>
     </header>
     <div class="pageContainer" id="maincontent">
-    
-	    <c:if test="${carrito == null || carrito.size() == 0}">
-	    
+	    <c:if test="${lineasPedido == null || lineasPedido.size() == 0}">
+	    	<c:redirect url="../ServletDetallesCompra?vacio=si"/>
 	    </c:if>
-	    <c:if test="${carrito != null && carrito.size() != 0}">
+	    <c:if test="${lineasPedido != null && lineasPedido.size() != 0}">
 	    	<table class="perfilesUsuarios">
 	    		<form method="post">
 					<tr>
-						<th colspan="2">Producto</th>
+						<th>Imagen</th>
+						<th>Producto</th>
 						<th>Cantidad</th>
 						<th>Precio Unitario</th>
 						<th>Precio Total</th>
-						<th colspan="2">Acción</th>
 					</tr>
 					<c:set var="precioTotal" value="${0}" />
-			    	<c:forEach items="${carrito}" var="linea">
+			    	<c:forEach items="${lineasPedido}" var="linea">
 			    	
 						<tr>
 							<td>
-								<img src="../${linea.value.juego.imgCover}"/>
+								<img src="../${linea.juego.imgCover}" alt="imagen de Producto"/>
 							</td>
-							<td>${linea.value.juego.titulo}</td>
+							<td>${linea.juego.titulo}</td>
 							<td>
-								<input name="cantidad${linea.key}" type="number" min="0" step="1" value="${linea.value.cantidad}">
+								${linea.cantidad}
 							</td>
-							<td>${linea.value.juego.precio} €</td>
-							<td>${linea.value.juego.precio * linea.value.cantidad} €</td>
-							<td>
-								<label>
-									<input type="submit" name="cambiarCantidad" value="Cambiar Cantidad" 
-										formaction="../ServletCarritoCompra?idJuego=${linea.key}"/>
-								</label>
-							</td>
-							<td>
-								<label>
-									<input type="submit" name="eliminarTodaLaCantidad" value="Quitar producto" 
-										formaction="../ServletCarritoCompra?idJuego=${linea.key}"/>
-								</label>
-							</td>
+							<td>${linea.juego.precio} €</td>
+							<td>${linea.juego.precio * linea.cantidad} €</td>
 						</tr>
-						<c:set var="precioTotal" value="${precioTotal + (linea.value.juego.precio * linea.value.cantidad)}" />
 		       		</c:forEach>
 		       		<tr>
-		       			<td colspan="4">TOTAL:   <span>${precioTotal } €</span></td>
-		       			<td>
-		       				<input type="submit" name="vaciarCarrito" value="Vaciar carrito" 
-								formaction="../ServletCarritoCompra"/>
-		       			</td>
 		       		</tr>
 	       		</form>
 	       	</table>
