@@ -65,6 +65,14 @@
 	                    <li>
 	                        <a id="xbox" href="registro.jsp">Registro</a>
 	                    </li>
+
+	                    <c:if test="${usuario.admin == true}">
+		                    <li>
+		                       	<a id="nintendo" href="listadoDeUsuarios.jsp">Listado de usuarios</a>
+		                    </li>
+		                    <li>
+					        	<a id="nintendo" href="listadoDeCompanias.jsp">Listado de Companias</a>
+					        </li>
 	                    </c:if>
 						<c:if test="${usuario != null}">
 		                    <li>
