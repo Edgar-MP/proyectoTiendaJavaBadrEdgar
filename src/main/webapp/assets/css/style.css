@@ -38,7 +38,9 @@ html {
 a {
     text-decoration: none;
 }
-
+.mt-3 {
+	margin-top: 3em;
+}
 header * {
     z-index: 10;
 }
@@ -1284,4 +1286,27 @@ footer {
 }
 .perfilesUsuarios td a:hover {
   color: rgba(255, 255, 255, 0.627);
+}
+.board {
+  position: relative;
+  top: 50%;
+  left: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 73.8vh;
+  width: 500px;
+  margin: -75px 0 0 -250px;
+  padding: 20px;
+  font: 75px/75px Monoton, cursive;
+  text-align: center;
+  text-transform: uppercase;
+  text-shadow: 0 0 80px red, 0 0 30px FireBrick, 0 0 6px DarkRed;
+  color: red;
+}
+
+#error {
+  color: #fff;
+  text-shadow: 0 0 80px #ffffff, 0 0 30px #008000, 0 0 6px #0000ff;
 }
