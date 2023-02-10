@@ -9,11 +9,6 @@
 			alert("El carrito se ha vaciado correctamente");
 		</script>
     </c:if>
-    <c:if test="${datosUsuario != null}">
-    	<c:remove var="datosUsuario" scope="session" />
-    </c:if>
-    
-    
     
 <!DOCTYPE html>
 <!-- Idioma -->
@@ -186,7 +181,6 @@
 </body>
 
 </html>
-
 <!-- 
 	“Si de alguna manera Dios me diera una segunda oportunidad... Lo haria todo de nuevo ”
 				- Joel Miller
