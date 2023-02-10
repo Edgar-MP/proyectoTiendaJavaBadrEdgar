@@ -6,6 +6,7 @@ public class Compra {
 	private int idCompra;
 	private Usuario usuario;
 	private Date fecha;
+	private Double total;
 	
 	public Compra(int idCompra, Usuario usuario, Date fecha) { 
 		this.idCompra = idCompra;
@@ -13,6 +14,13 @@ public class Compra {
 		this.fecha = fecha;
 	}
 
+	public Compra(int idCompra, Usuario usuario, Date fecha, double total) { 
+		this.idCompra = idCompra;
+		this.usuario = usuario;
+		this.fecha = fecha;
+		this.total = total;
+	}
+	
 	public Compra() {
 		
 	}
@@ -39,6 +47,14 @@ public class Compra {
 
 	public void setFecha(Date fecha) {
 		this.fecha = fecha;
+	}
+
+	public Double getTotal() {
+		return total;
+	}
+
+	public void setTotal(Double total) {
+		this.total = total;
 	}
 	
 	

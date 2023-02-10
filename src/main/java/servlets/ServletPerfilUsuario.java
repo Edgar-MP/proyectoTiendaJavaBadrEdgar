@@ -1,12 +1,15 @@
 package servlets;
 
 import java.io.IOException;
+import java.util.ArrayList;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import beans.Compra;
 import beans.Usuario;
 import dao.ClienteDAO;
 
@@ -30,8 +33,10 @@ public class ServletPerfilUsuario extends HttpServlet {
 		System.out.print("aaaa");
 		if (request.getParameter("idUser") != null) {
 			ClienteDAO cDao = new ClienteDAO();
-			Usuario user = cDao.buscaClientePorID(Integer.parseInt(request.getParameter("idUser")));
-			System.out.print(user);
+			int idUser = Integer.parseInt(request.getParameter("idUser"));
+			Usuario user = cDao.buscaClientePorID(idUser);
+			ArrayList<Compra> comprasUsuario = cDao.obtenerComprasUsuarioPorId(idUser);
+			request.getSession().setAttribute("comprasUsuario", comprasUsuario);
 			request.getSession().setAttribute("datosUsuario", user);
 			response.sendRedirect("html/perfilUsuario.jsp");
 		}

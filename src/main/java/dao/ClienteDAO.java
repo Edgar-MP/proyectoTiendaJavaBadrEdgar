@@ -11,6 +11,7 @@ import javax.servlet.ServletException;
 import javax.sql.DataSource;
 import javax.websocket.Session;
 
+import beans.Compra;
 import beans.Imagen;
 import beans.Usuario;
 import conex.BDConex;
@@ -226,6 +227,26 @@ public class ClienteDAO {
 		return usuarios;
 	}
 	
+	// Método que devuelve un ArrayList con todas las compras de un usuario pasandole un idUsuario
+	public ArrayList<Compra> obtenerComprasUsuarioPorId(int idUser) {
+		ArrayList<Compra> arrCompras = new ArrayList<Compra>();
+		Usuario user = buscaClientePorID(idUser);
+		String sql = "select * from compra where id_usuario = ?";
+		try {
+			con = ds.getConnection();
+			PreparedStatement ps = con.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            while(rs.next()){
+            	arrCompras.add(new Compra(rs.getInt("idCompra"), user, rs.getDate("fecha"), rs.getDouble("total")));
+            }
+            rs.close();
+            ps.close();
+            con.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} 
+		return arrCompras;
+	}
 	/* Método que devuelve si existe un cliente pasandole el nombre */
 	/*
 	public int cantClientesRegistrados() {
