@@ -45,7 +45,7 @@
             </div>
             <c:if test="${usuario != null}">
 	            <div id="btnCarrito">
-	            	<a href="carrito.jsp">
+	            	<a href="html/carrito.jsp">
 	            	<i class="fa-sharp fa-solid fa-cart-shopping fa-2xl"></i>
 	            	</a>
 	            </div>
