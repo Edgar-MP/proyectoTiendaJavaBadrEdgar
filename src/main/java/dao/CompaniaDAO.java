@@ -51,27 +51,25 @@ public class CompaniaDAO {
 		}
 		return compania;
 	}
-	public ArrayList<Usuario> listarUsuarios() {
-		ArrayList<Usuario> usuarios= new ArrayList<Usuario>();
-		String sql = "select usuario.idUsuario, usuario.nombre, usuario.apellidos, usuario.admin, imagen.ruta from usuario, imagen where imagen.idImagen=usuario.id_imagen;";
+	public ArrayList<Compania> listarUsuarios() {
+		ArrayList<Compania> companias= new ArrayList<Compania>();
+		String sql = "select compania.idCompania, compania.nombre, compania.enlaceOficial, imagen.ruta from compania, imagen where compania.idImagen= imagen.idImagen";
 		try {
 			con = ds.getConnection();
             Statement st = con.createStatement();
             ResultSet rs = st.executeQuery(sql);
             while(rs.next()){
-            	int idUsuario=rs.getInt("usuario.idUsuario");
-            	String nombre=capitalize(rs.getString("usuario.nombre"));
-            	String apellidos=capitalize(rs.getString("usuario.apellidos"));
-            	int admin= rs.getInt("usuario.admin");
+            	int idCompania=rs.getInt("compania.idCompania");
+            	String nombre=capitalize(rs.getString("compania.nombre"));
+            	String enlaceOficial=capitalize(rs.getString("compania.enlaceOficial"));
             	String ruta=rs.getString("imagen.ruta");
             	Imagen img= new Imagen(0, ruta);
-            	Usuario u= new Usuario();
-            	u.setAdminInt(admin);
-            	u.setNombre(nombre);
-            	u.setIdUser(idUsuario);
-            	u.setApellidos(apellidos);
-            	u.setImg(img);
-            	usuarios.add(u);
+            	Compania c= new Compania();
+            	c.setEnlaceOficial(enlaceOficial);
+            	c.setId(idCompania);
+            	c.setNombre(nombre);
+            	c.setImagen(img);
+            	companias.add(c);
             }
             
             rs.close();
@@ -80,7 +78,7 @@ public class CompaniaDAO {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} 
-		return usuarios;
+		return companias;
 	}
 
 

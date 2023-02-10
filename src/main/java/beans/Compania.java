@@ -1,15 +1,30 @@
 package beans;
 
+
+
 public class Compania {
 	private int id;
 	private String nombre, enlaceOficial;
-	
+	private Imagen imagen;
+	public Compania(int id, String nombre, String enlaceOficial, Imagen imagen) {
+		this.id = id;
+		this.nombre = nombre;
+		this.enlaceOficial = enlaceOficial;
+		this.imagen=imagen;
+	}
 	public Compania(int id, String nombre, String enlaceOficial) {
 		this.id = id;
 		this.nombre = nombre;
 		this.enlaceOficial = enlaceOficial;
 	}
-	
+	public Imagen getImagen() {
+		return imagen;
+	}
+
+	public void setImagen(Imagen imagen) {
+		this.imagen = imagen;
+	}
+
 	public Compania() {
 		
 	}
