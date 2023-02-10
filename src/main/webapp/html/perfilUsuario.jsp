@@ -165,4 +165,7 @@
 		</c:if>
 	</c:if>
 </c:if>
+<c:if test="${datosUsuario != null }">
+	<c:remove var="datosUsuario" scope="session"/>
+</c:if>
 
