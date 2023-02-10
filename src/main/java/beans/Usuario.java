@@ -1,170 +1,202 @@
 package beans;
 
 public class Usuario {
-	private int idUser;
-	private Imagen img;
-	private String nombre, apellidos, desc, dir, cp, municipio, provincia, pais, tlf, email, passw;
-	private boolean admin;
-	
-	public Usuario(int idUser, Imagen img, String nombre, String apellidos, String desc, String dir, String cp,
-			String municipio, String provincia, String pais, String tlf, String email, String passw, int admin) {
-		
-		this.idUser = idUser;
-		this.img = img;
-		this.nombre = nombre;
-		this.apellidos = apellidos;
-		this.desc = desc;
-		this.dir = dir;
-		this.cp = cp;
-		this.municipio = municipio;
-		this.provincia = provincia;
-		this.pais = pais;
-		this.tlf = tlf;
-		this.email = email;
-		this.passw = passw;
-		if(admin==1) {
-			this.admin = true;
-		}
-		else {
-			this.admin = false;
-		}
-		
-	}
-	
-	public Usuario() {
-		
-	}
 
-	public int getIdUser() {
-		return idUser;
-	}
+  private int idUser;
+  private Imagen img;
+  private String nombre, apellidos, desc, dir, cp, municipio, provincia, pais, tlf, email, passw;
+  private boolean admin;
 
-	public void setIdUser(int idUser) {
-		this.idUser = idUser;
-	}
+  public Usuario(
+    int idUser,
+    Imagen img,
+    String nombre,
+    String apellidos,
+    String desc,
+    String dir,
+    String cp,
+    String municipio,
+    String provincia,
+    String pais,
+    String tlf,
+    String email,
+    String passw,
+    int admin
+  ) {
+    this.idUser = idUser;
+    this.img = img;
+    this.nombre = nombre;
+    this.apellidos = apellidos;
+    this.desc = desc;
+    this.dir = dir;
+    this.cp = cp;
+    this.municipio = municipio;
+    this.provincia = provincia;
+    this.pais = pais;
+    this.tlf = tlf;
+    this.email = email;
+    this.passw = passw;
+    if (admin == 1) {
+      this.admin = true;
+    } else {
+      this.admin = false;
+    }
+  }
 
-	public Imagen getImg() {
-		return img;
-	}
+  public Usuario() {}
 
-	public void setImg(Imagen img) {
-		this.img = img;
-	}
+  public int getIdUser() {
+    return idUser;
+  }
 
-	public String getNombre() {
-		return nombre;
-	}
+  public void setIdUser(int idUser) {
+    this.idUser = idUser;
+  }
 
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
-	}
+  public Imagen getImg() {
+    return img;
+  }
 
-	public String getApellidos() {
-		return apellidos;
-	}
+  public void setImg(Imagen img) {
+    this.img = img;
+  }
 
-	public void setApellidos(String apellidos) {
-		this.apellidos = apellidos;
-	}
+  public String getNombre() {
+    return nombre;
+  }
 
-	public String getDesc() {
-		return desc;
-	}
+  public void setNombre(String nombre) {
+    this.nombre = nombre;
+  }
 
-	public void setDesc(String desc) {
-		this.desc = desc;
-	}
+  public String getApellidos() {
+    return apellidos;
+  }
 
-	public String getDir() {
-		return dir;
-	}
+  public void setApellidos(String apellidos) {
+    this.apellidos = apellidos;
+  }
 
-	public void setDir(String dir) {
-		this.dir = dir;
-	}
+  public String getDesc() {
+    return desc;
+  }
 
-	public String getCp() {
-		return cp;
-	}
+  public void setDesc(String desc) {
+    this.desc = desc;
+  }
 
-	public void setCp(String cp) {
-		this.cp = cp;
-	}
+  public String getDir() {
+    return dir;
+  }
 
-	public String getMunicipio() {
-		return municipio;
-	}
+  public void setDir(String dir) {
+    this.dir = dir;
+  }
 
-	public void setMunicipio(String municipio) {
-		this.municipio = municipio;
-	}
+  public String getCp() {
+    return cp;
+  }
 
-	public String getProvincia() {
-		return provincia;
-	}
+  public void setCp(String cp) {
+    this.cp = cp;
+  }
 
-	public void setProvincia(String provincia) {
-		this.provincia = provincia;
-	}
+  public String getMunicipio() {
+    return municipio;
+  }
 
-	public String getPais() {
-		return pais;
-	}
+  public void setMunicipio(String municipio) {
+    this.municipio = municipio;
+  }
 
-	public void setPais(String pais) {
-		this.pais = pais;
-	}
+  public String getProvincia() {
+    return provincia;
+  }
 
-	public String getTlf() {
-		return tlf;
-	}
+  public void setProvincia(String provincia) {
+    this.provincia = provincia;
+  }
 
-	public void setTlf(String tlf) {
-		this.tlf = tlf;
-	}
+  public String getPais() {
+    return pais;
+  }
 
-	public String getEmail() {
-		return email;
-	}
+  public void setPais(String pais) {
+    this.pais = pais;
+  }
 
-	public void setEmail(String email) {
-		this.email = email;
-	}
+  public String getTlf() {
+    return tlf;
+  }
 
-	public String getPassw() {
-		return passw;
-	}
+  public void setTlf(String tlf) {
+    this.tlf = tlf;
+  }
 
-	public void setPassw(String passw) {
-		this.passw = passw;
-	}
+  public String getEmail() {
+    return email;
+  }
 
-	public boolean getAdmin() {
-		return admin;
-	}
+  public void setEmail(String email) {
+    this.email = email;
+  }
 
-	public void setAdmin(boolean admin) {
-		this.admin = admin;
-	}
-	
-	public void setAdminInt(int admin) {
-		if(admin==1) {
-			this.admin = true;
-		}
-		else {
-			this.admin = false;
-		}
-		
-	}
+  public String getPassw() {
+    return passw;
+  }
 
-	@Override
-	public String toString() {
-		return "Usuario [idUser=" + idUser + ", img=" + img + ", nombre=" + nombre + ", apellidos=" + apellidos
-				+ ", desc=" + desc + ", dir=" + dir + ", cp=" + cp + ", municipio=" + municipio + ", provincia="
-				+ provincia + ", pais=" + pais + ", tlf=" + tlf + ", email=" + email + ", passw=" + passw + ", admin="
-				+ admin + "]";
-	}
-	
-	
-	
+  public void setPassw(String passw) {
+    this.passw = passw;
+  }
+
+  public boolean getAdmin() {
+    return admin;
+  }
+
+  public void setAdmin(boolean admin) {
+    this.admin = admin;
+  }
+
+  public void setAdminInt(int admin) {
+    if (admin == 1) {
+      this.admin = true;
+    } else {
+      this.admin = false;
+    }
+  }
+
+  @Override
+  public String toString() {
+    return (
+      "Usuario [idUser=" +
+      idUser +
+      ", img=" +
+      img +
+      ", nombre=" +
+      nombre +
+      ", apellidos=" +
+      apellidos +
+      ", desc=" +
+      desc +
+      ", dir=" +
+      dir +
+      ", cp=" +
+      cp +
+      ", municipio=" +
+      municipio +
+      ", provincia=" +
+      provincia +
+      ", pais=" +
+      pais +
+      ", tlf=" +
+      tlf +
+      ", email=" +
+      email +
+      ", passw=" +
+      passw +
+      ", admin=" +
+      admin +
+      "]"
+    );
+  }
 }

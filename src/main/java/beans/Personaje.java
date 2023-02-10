@@ -1,58 +1,55 @@
 package beans;
 
 public class Personaje {
-	private int idPersonaje;
-	private String nombre;
-	private int idJuego;
-	private Imagen imagen;
-	
-	public Personaje(int idPersonaje, int idJuego, Imagen imagen, String nombre) {
-		this.idPersonaje = idPersonaje;
-		this.idJuego = idJuego;
-		this.imagen = imagen;
-		this.nombre = nombre;
-	}
 
-	public Personaje() {
+  private int idPersonaje;
+  private String nombre;
+  private int idJuego;
+  private Imagen imagen;
 
-	}
+  public Personaje(int idPersonaje, int idJuego, Imagen imagen, String nombre) {
+    this.idPersonaje = idPersonaje;
+    this.idJuego = idJuego;
+    this.imagen = imagen;
+    this.nombre = nombre;
+  }
 
-	public int getIdPersonaje() {
-		return idPersonaje;
-	}
+  public Personaje() {}
 
-	public void setIdPersonaje(int idPersonaje) {
-		this.idPersonaje = idPersonaje;
-	}
+  public int getIdPersonaje() {
+    return idPersonaje;
+  }
 
-	public String getNombre() {
-		return nombre;
-	}
+  public void setIdPersonaje(int idPersonaje) {
+    this.idPersonaje = idPersonaje;
+  }
 
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
-	}
+  public String getNombre() {
+    return nombre;
+  }
 
-	public int getJuego() {
-		return idJuego;
-	}
+  public void setNombre(String nombre) {
+    this.nombre = nombre;
+  }
 
-	public void setJuego(int idJuego) {
-		this.idJuego = idJuego;
-	}
+  public int getJuego() {
+    return idJuego;
+  }
 
-	public Imagen getImagen() {
-		return imagen;
-	}
+  public void setJuego(int idJuego) {
+    this.idJuego = idJuego;
+  }
 
-	public void setImagen(Imagen imagen) {
-		this.imagen = imagen;
-	}
+  public Imagen getImagen() {
+    return imagen;
+  }
 
-	@Override
-	public String toString() {
-		return nombre;
-	}
-	
-	
+  public void setImagen(Imagen imagen) {
+    this.imagen = imagen;
+  }
+
+  @Override
+  public String toString() {
+    return nombre;
+  }
 }

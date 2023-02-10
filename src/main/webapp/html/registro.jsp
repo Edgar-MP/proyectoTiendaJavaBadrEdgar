@@ -19,7 +19,7 @@
     <!-- favicon -->
     <link rel="shortcut icon" sizes="any" href="../assets/img/favicon/favicon.ico">
     <!-- Titulo -->
-    <title>Inicio | Gaming for Gamers</title>
+    <title>Registro | Gaming for Gamers</title>
     <!-- CSS -->
     <link rel="stylesheet" href="../assets/css/style.css" media="screen">
 </head>
@@ -77,7 +77,7 @@
 		                       	<a id="nintendo" href="listadoDeUsuarios.jsp?idUsuario="${usuario.idUser}">Listado de usuarios</a>
 		                    </li>
 		                    <li>
-					        	<a id="nintendo" href="listadoDeCompanias.jsp">Listado de Companias</a>
+					        	<a id="pc" href="listadoDeCompanias.jsp">Listado de Compañías</a>
 					        </li>
 	                    </c:if>
                     </c:if>
@@ -89,6 +89,7 @@
                 <div class="background-image" style='background-image: url(../assets/img/menu/play.jpg)'></div>
                 <div class="background-image" style='background-image: url(../assets/img/menu/xbox.jpg)'></div>
                 <div class="background-image" style='background-image: url(../assets/img/menu/nintendo.jpg)'></div>
+                <div class="background-image" style='background-image: url(../assets/img/menu/pc.jpg)'></div>
             </div>
 
             <div id="close">

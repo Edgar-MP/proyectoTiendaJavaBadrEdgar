@@ -6,7 +6,7 @@ new Vue({
   el: "#app",
   data() {
     return {
-      currentCardBackground: Math.floor(Math.random()* 25 + 1), // just for fun :D
+      currentCardBackground: Math.floor(Math.random() * 25 + 1), // just for fun :D
       cardName: "",
       cardNumber: "",
       cardMonth: "",
@@ -18,7 +18,7 @@ new Vue({
       cardNumberTemp: "",
       isCardFlipped: false,
       focusElementStyle: null,
-      isInputFocused: false
+      isInputFocused: false,
     };
   },
   mounted() {
@@ -26,7 +26,7 @@ new Vue({
     document.getElementById("cardNumber").focus();
   },
   computed: {
-    getCardType () {
+    getCardType() {
       let number = this.cardNumber;
       let re = new RegExp("^4");
       if (number.match(re) != null) return "visa";
@@ -39,40 +39,42 @@ new Vue({
 
       re = new RegExp("^6011");
       if (number.match(re) != null) return "discover";
-      
-      re = new RegExp('^9792')
-      if (number.match(re) != null) return 'troy'
+
+      re = new RegExp("^9792");
+      if (number.match(re) != null) return "troy";
 
       return "visa"; // default type
     },
-		generateCardNumberMask () {
-			return this.getCardType === "amex" ? this.amexCardMask : this.otherCardMask;
+    generateCardNumberMask() {
+      return this.getCardType === "amex"
+        ? this.amexCardMask
+        : this.otherCardMask;
     },
-    minCardMonth () {
+    minCardMonth() {
       if (this.cardYear === this.minCardYear) return new Date().getMonth() + 1;
       return 1;
-    }
+    },
   },
   watch: {
-    cardYear () {
+    cardYear() {
       if (this.cardMonth < this.minCardMonth) {
         this.cardMonth = "";
       }
-    }
+    },
   },
   methods: {
-    flipCard (status) {
+    flipCard(status) {
       this.isCardFlipped = status;
     },
-    focusInput (e) {
+    focusInput(e) {
       this.isInputFocused = true;
       let targetRef = e.target.dataset.ref;
       let target = this.$refs[targetRef];
       this.focusElementStyle = {
         width: `${target.offsetWidth}px`,
         height: `${target.offsetHeight}px`,
-        transform: `translateX(${target.offsetLeft}px) translateY(${target.offsetTop}px)`
-      }
+        transform: `translateX(${target.offsetLeft}px) translateY(${target.offsetTop}px)`,
+      };
     },
     blurInput() {
       let vm = this;
@@ -82,6 +84,6 @@ new Vue({
         }
       }, 300);
       vm.isInputFocused = false;
-    }
-  }
+    },
+  },
 });
