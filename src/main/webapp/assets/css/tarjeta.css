@@ -93,8 +93,9 @@
 .card-form__group .card-input__input:last-child {
   margin-right: 0;
 }
-.card-form__button {	
+.card-form__button {
   width: 100%;
+  displat: flex:
   height: 55px;
   background: #2364d2;
   border: none;
