@@ -119,4 +119,15 @@ xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee;http://xmlns.jcp.org/xml/
 		<servlet-name>ServletListadoCompanias</servlet-name>
 		<url-pattern>/ServletListadoCompanias</url-pattern>
 	</servlet-mapping>
+	
+	<!-- Servlet Listado Companias -->
+	<servlet>
+		<servlet-name>ServletDetallesCompra</servlet-name>
+		<servlet-class>servlets.ServletDetallesCompra</servlet-class>
+	</servlet>
+	
+	<servlet-mapping>
+		<servlet-name>ServletDetallesCompra</servlet-name>
+		<url-pattern>/ServletDetallesCompra</url-pattern>
+	</servlet-mapping>
 </web-app>
