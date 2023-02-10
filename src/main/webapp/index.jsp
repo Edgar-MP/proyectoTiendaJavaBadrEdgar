@@ -142,7 +142,7 @@
 	                	</c:forEach>
 	                </div>
 	                <div class="detalles">
-	                     <a href="html/videojuegos.html?idJuego=${juego.idJuego }">
+	                     <a href="html/videojuegos.jsp?idJuego=${juego.idJuego }">
 	                        <div class="titulo">${juego.titulo}</div>
 	                    </a>
 	                    <a href="${juego.compania.enlaceOficial}" target="_blank">
