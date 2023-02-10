@@ -86,7 +86,7 @@
 		                       	<a id="nintendo" href="html/listadoDeUsuarios.jsp">Listado de usuarios</a>
 		                    </li>
 		                    <li>
-					        	<a id="nintendo" href="listadoDeCompanias.jsp">Listado de Companias</a>
+					        	<a id="nintendo" href="html/listadoDeCompanias.jsp">Listado de Companias</a>
 					       	</li>
 	                    </c:if>
                     </c:if>
