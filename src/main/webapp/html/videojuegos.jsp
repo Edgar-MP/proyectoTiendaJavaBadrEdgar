@@ -35,6 +35,12 @@
 			window.location.href = "./videojuegos.jsp?aWxsb2p1YW4gTWFuZGE";
 		</script>
 	</c:if>
+	 <c:if test="${param.bG1kc2hvdw != null}">
+		<script>
+			alert("Juego añadido al carrito");
+			window.location.href = "./videojuegos.jsp?aWxsb2p1YW4gTWFuZGE";
+		</script>
+	</c:if>
 </head>
 <body>
 <header>
