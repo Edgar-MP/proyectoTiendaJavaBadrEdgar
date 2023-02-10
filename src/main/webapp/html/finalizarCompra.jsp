@@ -251,7 +251,10 @@
         </div>
 
         <div class="card-form__button">
-          <a>Pagar!</a>
+          	<c:if test="${param.total != null}">
+				<a href="html/finalizarCompra.jsp?pagar=si&compraTotal=${param.total}">Pagar ${param.total} €</a>
+			</c:if>
+          
         </div>
         <p class=card-item-info>Gaming4Gamers no guarda ninguna información sobre tu tarjeta</p>
       </div>
