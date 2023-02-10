@@ -26,7 +26,7 @@ public class ClienteDAO {
 		ds = bdConex.getDs();
 	}
 	
-	 public static final String capitalize(String str) {
+	 private static final String capitalize(String str) {
 
 	      if (str == null || str.length() == 0) return str;
 
