@@ -90,4 +90,15 @@ xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee;http://xmlns.jcp.org/xml/
 		<servlet-name>ServletCarritoCompra</servlet-name>
 		<url-pattern>/ServletCarritoCompra</url-pattern>
 	</servlet-mapping>
+	
+	<!-- Servlet Finalizar Compra -->
+	<servlet>
+		<servlet-name>ServletFinalizarCompra</servlet-name>
+		<servlet-class>servlets.ServletFinalizarCompra</servlet-class>
+	</servlet>
+	
+	<servlet-mapping>
+		<servlet-name>ServletFinalizarCompra</servlet-name>
+		<url-pattern>/ServletFinalizarCompra</url-pattern>
+	</servlet-mapping>
 </web-app>
