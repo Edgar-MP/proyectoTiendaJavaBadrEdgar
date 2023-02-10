@@ -113,10 +113,20 @@
 							<th>Imagen</th>
 							<th>ID</th>
 							<th>Nombre</th>
-							<th>Administrador</th>
-							<th>Perfil de usuario</th>
+							<th>Enlace Oficial</th>
 						</tr>
-						
+						<c:forEach items="${companias}" var="compania">
+							<tr>
+								<td>
+									<img src="../${compania.getImg().getRuta()}" alt="imagen de usuario" width="250">
+								</td>
+								<td>${compania.id}</td>
+						    	<td>${compania.nombre}</td>
+								<td>
+									<a href="${compania.enlaceOficial}">Enlace Oficial</a>
+								</td>
+							</tr>
+	               		</c:forEach>
 						
 	               	</table>	
 			    </div>

@@ -51,7 +51,7 @@ public class CompaniaDAO {
 		}
 		return compania;
 	}
-	public ArrayList<Compania> listarUsuarios() {
+	public ArrayList<Compania> listarCompanias() {
 		ArrayList<Compania> companias= new ArrayList<Compania>();
 		String sql = "select compania.idCompania, compania.nombre, compania.enlaceOficial, imagen.ruta from compania, imagen where compania.idImagen= imagen.idImagen";
 		try {

@@ -9,8 +9,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import beans.Compania;
 import beans.Usuario;
 import dao.ClienteDAO;
+import dao.CompaniaDAO;
 
 public class ServletListadoCompanias extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -26,11 +28,10 @@ public class ServletListadoCompanias extends HttpServlet {
 			response.sendRedirect("html/listadoDeCompanias.jsp");
 		}
 		else {
-			System.out.println("entra");
-			ClienteDAO cd = new ClienteDAO();
-			ArrayList<Usuario> usuarios=cd.listarUsuarios();
-			request.getSession().setAttribute("usuarios", usuarios);
-			response.sendRedirect("html/listadoDeUsuarios.jsp");
+			CompaniaDAO cd = new CompaniaDAO();
+			ArrayList<Compania> companias = cd.listarCompanias();
+			request.getSession().setAttribute("companias", companias);
+			response.sendRedirect("html/listadoDeCompanias.jsp");
 		}
 		
 	}
