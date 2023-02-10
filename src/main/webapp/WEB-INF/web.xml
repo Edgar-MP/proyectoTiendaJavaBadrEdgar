@@ -7,6 +7,13 @@ xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee;http://xmlns.jcp.org/xml/
 		<welcome-file>index.jsp</welcome-file>
 	</welcome-file-list>
 	
+	<!-- Error 404
+	<error-page>
+	    <error-code>404</error-code>
+	    <location>/404.html</location>
+	</error-page> -->
+	
+	
 	<resource-ref>
 		<description>DB Connection</description>
 		<res-ref-name>jdbc/poolTiendaJuegosDB</res-ref-name>
