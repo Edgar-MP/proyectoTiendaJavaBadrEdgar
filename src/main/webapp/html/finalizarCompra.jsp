@@ -11,10 +11,10 @@
     <!-- Viewport -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Autor -->
-    <meta name="author" content="Edgar Mart铆nez Palmero" />
-    <!-- Descripci贸n -->
+    <meta name="author" content="Edgar Martínez Palmero" />
+    <!-- Descripción -->
     <meta name="description"
-        content="Gamers for Gamers es una web en la que podras encontrar toda la informaci贸n necesaria sobre tus videouegos favoritos" />
+        content="Gamers for Gamers es una web en la que podras encontrar toda la información necesaria sobre tus videouegos favoritos" />
     <!-- favicon -->
     <link rel="shortcut icon" sizes="any" href="../assets/img/favicon/favicon.ico">
     <!-- Titulo -->
@@ -31,7 +31,7 @@
         </a>
         <div id="navigation">
             <div id="btnMenu">
-                <img src="../assets/img/icons/menu.svg" alt="Abrir men煤 de navegaci贸n">
+                <img src="../assets/img/icons/menu.svg" alt="Abrir menú de navegación">
             </div>
             <c:if test="${usuario != null}">
 	            <div id="btnCarrito">
@@ -66,7 +66,7 @@
                     </c:if>
 					<c:if test="${usuario != null}">
 	                    <li>
-	                       	<a id="play" href="../ServletLogin?cerrarSesion=html/finalizarCompra.jsp">Cerrar Sesi贸n</a>
+	                       	<a id="play" href="../ServletLogin?cerrarSesion=html/finalizarCompra.jsp">Cerrar Sesión</a>
 	                    </li>
 	                    <li>
 	                    	<a id="xbox" href="perfilUsuario.jsp?idUsuario=${usuario.idUser}">Perfil de usuario</a>
@@ -92,7 +92,7 @@
             </div>
 
             <div id="close">
-                <img src="../assets/img/icons/close.svg" alt="Cerrar men煤 de navegaci贸n">
+                <img src="../assets/img/icons/close.svg" alt="Cerrar menú de navegación">
             </div>
         </div>
     </header>
@@ -112,7 +112,7 @@
         <img src="../assets/img/logo/logoBlancoLogitech.svg" alt="Logo de Gaming4Gamers" width="150">
         <div class="redes">
             <a class="twitter" href="https://twitter.com/illojuan" target="_blank"
-                aria-label="Ir a la p谩gina de Twitter"><i class="fa-brands fa-twitter fa-2x"></i></a>
+                aria-label="Ir a la página de Twitter"><i class="fa-brands fa-twitter fa-2x"></i></a>
             <a class="youtube" href="https://www.youtube.com/@IlloJuan_" target="_blank"
                 aria-label="Ir al canal de YouTube"><i class="fa-brands fa-youtube fa-2x"></i></a>
             <a class="instagram" href="https://www.instagram.com/illojuan/?hl=es" target="_blank"
