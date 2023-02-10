@@ -9,10 +9,10 @@
 		<c:redirect url = "../index.jsp"/>
 	</c:if>
 	<c:if test="${usuario.admin}">
-		<c:if test="${usuarios == null}">
-			<c:redirect url = "../ServletListadoUsuarios?obtenerUsuarios=si"/>
+		<c:if test="${companias == null}">
+			<c:redirect url = "../ServletListadoCompanias?obtenerCompanias=si"/>
 		</c:if>
-		<c:if test="${usuarios != null}">
+		<c:if test="${companias != null}">
 			<!DOCTYPE html>
 			<!-- Idioma -->
 			<html lang="es" data-uw-w-loader="">
@@ -30,7 +30,7 @@
 			    <!-- favicon -->
 			    <link rel="shortcut icon" sizes="any" href="../assets/img/favicon/favicon.ico">
 			    <!-- Titulo -->
-			    <title>Listado de Usuarios | Gaming for Gamers</title>
+			    <title>Listado de Companias | Gaming for Gamers</title>
 			    <!-- CSS -->
 			    <link rel="stylesheet" href="../assets/css/style.css" media="screen">
 			</head>
@@ -78,7 +78,7 @@
 			                    </c:if>
 								<c:if test="${usuario != null}">
 				                    <li>
-				                       	<a id="play" href="../ServletLogin?cerrarSesion=html/listadoDeUsuarios.jsp">Cerrar Sesión</a>
+				                       	<a id="play" href="../ServletLogin?cerrarSesion=html/listadoDeCompanias.jsp">Cerrar Sesión</a>
 				                    </li>
 				                    <li>
 				                    	<a id="xbox" href="perfilUsuario.jsp?idUsuario=${usuario.idUser}">Perfil de usuario</a>
@@ -86,6 +86,9 @@
 				                    <c:if test="${usuario.admin == true}">
 					                    <li>
 					                       	<a id="nintendo" href="listadoDeUsuarios.jsp">Listado de usuarios</a>
+					                    </li>
+					                    <li>
+					                       	<a id="nintendo" href="listadoDeCompanias.jsp">Listado de Companias</a>
 					                    </li>
 				                    </c:if>
 			                    </c:if>
@@ -113,6 +116,8 @@
 							<th>Administrador</th>
 							<th>Perfil de usuario</th>
 						</tr>
+						
+						
 	               	</table>	
 			    </div>
 			    <footer>

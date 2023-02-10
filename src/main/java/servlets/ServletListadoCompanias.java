@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import beans.Usuario;
 import dao.ClienteDAO;
 
-public class ServletListadoUsuarios extends HttpServlet {
+public class ServletListadoCompanias extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 
@@ -22,8 +22,8 @@ public class ServletListadoUsuarios extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		if(request.getParameter("obtenerUsuarios")==null) {
-			response.sendRedirect("html/listadoDeUsuarios.jsp");
+		if(request.getParameter("obtenerCompanias")==null) {
+			response.sendRedirect("html/listadoDeCompanias.jsp");
 		}
 		else {
 			System.out.println("entra");
