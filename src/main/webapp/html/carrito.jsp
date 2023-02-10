@@ -45,8 +45,12 @@
 		            <img src="../${usuario.img.ruta }" class="imgUser" alt="${usuario.img }" width="100">
 		            <p>${usuario.nombre.toUpperCase() }</p>
 	            </c:if>
-	            <c:if test="${usuario.img == null}">
-	                <img src="../assets/img/logo/logoBlancoLogitech.svg" alt="Logo de gaming4gamers" width="150">
+	            <c:if test="${usuario != null}">
+		            <div id="btnCarrito">
+		            	<a href="carrito.jsp">
+		            	<i class="fa-sharp fa-solid fa-cart-shopping fa-2xl"></i>
+		            	</a>
+		            </div>
 	            </c:if>
             </div>
             <nav>
