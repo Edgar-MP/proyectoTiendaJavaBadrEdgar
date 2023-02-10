@@ -31,19 +31,37 @@ public class ServletFinalizarCompra extends HttpServlet {
 			double total = Double.parseDouble(request.getParameter("total"));
 			response.sendRedirect("html/finalizarCompra.jsp?total="+total);
 		} else {
+			Double total=Double.valueOf(request.getParameter("compraTotal"));
 			if (request.getParameter("pagar") != null) {
-				FinalizarCompraDAO fc= new FinalizarCompraDAO();
-				Double total=Double.valueOf(request.getParameter("compraTotal"));
-				Usuario u= (Usuario) request.getSession().getAttribute("usuario");
-				fc.CrearCompra(u.getIdUser(), total);
-				HashMap<Integer, LineaPedido> carrito=(HashMap<Integer, LineaPedido>) request.getSession().getAttribute("carrito");
-				Iterator<Integer> it=carrito.keySet().iterator();
-				while(it.hasNext()) {
-					Integer idJuego=it.next();
-					LineaPedido lp=carrito.get(idJuego);
-					fc.CrearLineaPedido(lp.getCantidad(),idJuego);
-				}
-				response.sendRedirect("index.jsp");
+//				if(request.getParameter("cardNumber") == null){
+//					response.sendRedirect("html/finalizarCompra.jsp?camposVacios=1&total"+total);
+//				}
+//				else if(request.getParameter("cardName") == null){
+//					response.sendRedirect("html/finalizarCompra.jsp?camposVacios=1&total"+total);
+//				}
+//				else if(request.getParameter("cardCvv") == null){
+//					response.sendRedirect("html/finalizarCompra.jsp?camposVacios=1&total"+total);
+//				}
+//				else if(request.getParameter("cardYear") == null){
+//					response.sendRedirect("html/finalizarCompra.jsp?camposVacios=1&total"+total);
+//				}
+//				else if(request.getParameter("cardMonth") == null){
+//					response.sendRedirect("html/finalizarCompra.jsp?camposVacios=1&total"+total);
+//				}
+//				else {
+					FinalizarCompraDAO fc= new FinalizarCompraDAO();
+					Usuario u= (Usuario) request.getSession().getAttribute("usuario");
+					fc.CrearCompra(u.getIdUser(), total);
+					HashMap<Integer, LineaPedido> carrito=(HashMap<Integer, LineaPedido>) request.getSession().getAttribute("carrito");
+					Iterator<Integer> it=carrito.keySet().iterator();
+					while(it.hasNext()) {
+						Integer idJuego=it.next();
+						LineaPedido lp=carrito.get(idJuego);
+						fc.CrearLineaPedido(lp.getCantidad(),idJuego);
+					}
+					request.getSession().removeAttribute("carrito");
+					response.sendRedirect("index.jsp");
+//				}
 			}
 			else {
 				response.sendRedirect("index.jsp");
