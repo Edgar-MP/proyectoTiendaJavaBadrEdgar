@@ -252,7 +252,7 @@
 
         <div class="card-form__button">
           	<c:if test="${param.total != null}">
-				<a href="html/finalizarCompra.jsp?pagar=si&compraTotal=${param.total}">Pagar ${param.total} €</a>
+				<a href="../ServletFinalizarCompra?pagar=si&compraTotal=${param.total}">Pagar ${param.total} €</a>
 			</c:if>
           
         </div>

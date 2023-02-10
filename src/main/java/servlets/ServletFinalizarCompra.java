@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import beans.LineaPedido;
+import beans.Usuario;
 import dao.FinalizarCompraDAO;
 
 public class ServletFinalizarCompra extends HttpServlet {
@@ -30,23 +31,25 @@ public class ServletFinalizarCompra extends HttpServlet {
 			double total = Double.parseDouble(request.getParameter("total"));
 			response.sendRedirect("html/finalizarCompra.jsp?total="+total);
 		} else {
-			response.sendRedirect("index.jsp");
-		}
-		if (request.getParameter("pagar") != null) {
-			FinalizarCompraDAO fc= new FinalizarCompraDAO();
-			Double total=Double.valueOf(request.getParameter("compraTotal"));
-
-			//			fc.CrearCompra(, )
-			HashMap<Integer, LineaPedido> carrito=(HashMap<Integer, LineaPedido>) request.getSession().getAttribute("carrito");
-			Iterator<Integer> it=carrito.keySet().iterator();
-			while(it.hasNext()) {
-				LineaPedido lp=carrito.get(it.next());
-				
+			if (request.getParameter("pagar") != null) {
+				FinalizarCompraDAO fc= new FinalizarCompraDAO();
+				Double total=Double.valueOf(request.getParameter("compraTotal"));
+				Usuario u= (Usuario) request.getSession().getAttribute("usuario");
+				fc.CrearCompra(u.getIdUser(), total);
+				HashMap<Integer, LineaPedido> carrito=(HashMap<Integer, LineaPedido>) request.getSession().getAttribute("carrito");
+				Iterator<Integer> it=carrito.keySet().iterator();
+				while(it.hasNext()) {
+					Integer idJuego=it.next();
+					LineaPedido lp=carrito.get(idJuego);
+					fc.CrearLineaPedido(lp.getCantidad(),idJuego);
+				}
+				response.sendRedirect("index.jsp");
+			}
+			else {
+				response.sendRedirect("index.jsp");
 			}
 		}
-		else {
-			response.sendRedirect("index.jsp");
-		}
+		
 	}
 
 }

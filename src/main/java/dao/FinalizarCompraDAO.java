@@ -1,6 +1,7 @@
 package dao;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -58,13 +59,14 @@ public class FinalizarCompraDAO {
 		else {
 			idCompra+=1;
 		}
-		String sql = "INSERT INTO compra (idCompra, fecha, id_usuario)VALUES (?,sysdate(), ?, ?);";
+		String sql = "INSERT INTO compra (idCompra, fecha, total, id_usuario) VALUES (?,?, ?, ?);";
 		try {
 			con = ds.getConnection();
 			PreparedStatement ps = con.prepareStatement(sql);
 			ps.setInt(1, idCompra);
-			ps.setInt(2, idUsuario);
+			ps.setDate(2, new Date(System.currentTimeMillis()));
 			ps.setDouble(3, total);
+			ps.setInt(4, idUsuario);
 			ps.executeUpdate();
             ps.close();
             con.close();
@@ -75,7 +77,7 @@ public class FinalizarCompraDAO {
 	
 	public void CrearLineaPedido( int cantidad, int id_juego) {
 		int idCompra=IdMasGrande();
-		String sql = "INSERT INTO lineapedido (cantidad, id_juego, id_compra )VALUES ( ?, ?, ? );";
+		String sql = "INSERT INTO lineapedido (cantidad, id_juego, id_compra ) VALUES ( ?, ?, ? );";
 		try {
 			con = ds.getConnection();
 			PreparedStatement ps = con.prepareStatement(sql);
