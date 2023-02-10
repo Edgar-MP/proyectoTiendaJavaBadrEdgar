@@ -56,6 +56,11 @@ public class Compra {
 	public void setTotal(Double total) {
 		this.total = total;
 	}
+
+	@Override
+	public String toString() {
+		return "Compra [idCompra=" + idCompra + ", usuario=" + usuario + ", fecha=" + fecha + ", total=" + total + "]";
+	}
 	
 	
 }

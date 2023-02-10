@@ -33,7 +33,11 @@ public class ServletCarritoCompra extends HttpServlet {
 			if (request.getParameter("cambiarCantidad") != null) {
 				HashMap<Integer, LineaPedido> carrito = obtenerCarritoDeSesion(request);
 				int idJuego = Integer.parseInt(request.getParameter("idJuego"));
-				int nuevaCantidad = Integer.parseInt(request.getParameter("cantidad"+idJuego));
+				int nuevaCantidad;
+				if (request.getParameter("cantidad"+idJuego) != "") 
+					nuevaCantidad = Integer.parseInt(request.getParameter("cantidad"+idJuego));
+				else 
+					nuevaCantidad = 0;
 				if (nuevaCantidad != 0) {
 					LineaPedido lp = carrito.get(idJuego);
 					lp.setCantidad(nuevaCantidad);

@@ -235,6 +235,7 @@ public class ClienteDAO {
 		try {
 			con = ds.getConnection();
 			PreparedStatement ps = con.prepareStatement(sql);
+			ps.setInt(1, idUser);
             ResultSet rs = ps.executeQuery();
             while(rs.next()){
             	arrCompras.add(new Compra(rs.getInt("idCompra"), user, rs.getDate("fecha"), rs.getDouble("total")));

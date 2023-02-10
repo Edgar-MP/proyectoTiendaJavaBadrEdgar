@@ -60,7 +60,7 @@ public class ServletFinalizarCompra extends HttpServlet {
 						fc.CrearLineaPedido(lp.getCantidad(),idJuego);
 					}
 					request.getSession().removeAttribute("carrito");
-					response.sendRedirect("index.jsp");
+					response.sendRedirect("html/compraFinalizada.jsp");
 //				}
 			}
 			else {

@@ -127,7 +127,7 @@
 		    	</div>
 		    	
 		    	
-		    	<c:if test="${comprasUsuario != null || comprasUsuario.size() > 0}">
+		    	<c:if test="${comprasUsuario != null && comprasUsuario.size() > 0}">
 			    	<!-- Listado de compras -->
 			    	<table class="perfilesUsuarios">
 						<tr>
@@ -136,18 +136,23 @@
 							<th>Total</th>
 							<th>Ver detalles</th>
 						</tr>
-				    	<c:forEach items="${compra}" var="comprasUsuario">
+				    	<%  
+				    		System.out.print(session.getAttribute("comprasUsuario"));
+				    		%>
+				    	<c:forEach items="${comprasUsuario}" var="compra">
 							<tr>
-								<td>${compra.idUser}</td>
+								<td>${compra.idCompra}</td>
 						    	<td>${compra.fecha}</td>
 								<td>${compra.total}</td>
-								<td>Ver detalles</td>
+								<td>
+									<a href="ServletDetallesCompra?id=${compra.idCompra}">Detalles compra</a>
+								</td>
 							</tr>
 	               		</c:forEach>
 	               	</table>
 				</c:if>
 		    	
-		    	<c:if test="${comprasUsuario != null || comprasUsuario.size() <= 0}">
+		    	<c:if test="${comprasUsuario == null || comprasUsuario.size() <= 0}">
 		    		<h2>Este usuario no tiene compras</h2>
 		    	</c:if>
 		    	
@@ -178,11 +183,11 @@
 		<c:remove var="comprasUsuario" scope="session"/>
 	</c:if>
 	<c:if test="${usuario == null}">
-		<c:redirect url = "../index.jsp?A"/>
+		<c:redirect url = "../index.jsp?"/>
 	</c:if>
 	<c:if test="${usuario != null}">
 		<c:if test="${param.idUsuario == null}">
-			<c:redirect url = "../index.jsp?B"/>
+			<c:redirect url = "../index.jsp?"/>
 		</c:if>
 		<c:if test="${usuario.idUser == param.idUsuario }">
 			<c:redirect url = "../ServletPerfilUsuario?idUser=${param.idUsuario }"/>
@@ -192,7 +197,7 @@
 		</c:if>
 		<c:if test="${usuario.admin == false}">
 			<c:if test="${usuario.idUser != param.idUsuario }">
-				<c:redirect url = "../index.jsp?${usuario.admin}"/>
+				<c:redirect url = "../index.jsp"/>
 			</c:if>
 		</c:if>
 	</c:if>
