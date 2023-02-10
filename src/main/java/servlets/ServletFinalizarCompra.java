@@ -16,8 +16,8 @@ public class ServletFinalizarCompra extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		if (request.getParameter("total") != null) {
-			
-			response.sendRedirect("html/listadoDeCompanias.jsp");
+			double total = Double.parseDouble(request.getParameter("total"));
+			response.sendRedirect("html/finalizarCompra.jsp?total="+total);
 		} else {
 			response.sendRedirect("index.jsp");
 		}
