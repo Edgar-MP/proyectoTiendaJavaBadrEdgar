@@ -123,7 +123,7 @@
 								<td>${compania.id}</td>
 						    	<td>${compania.nombre}</td>
 								<td>
-									<a href="${compania.enlaceOficial}">Enlace Oficial</a>
+									<a href="${compania.enlaceOficial}" target="_blank">Enlace Oficial</a>
 								</td>
 							</tr>
 	               		</c:forEach>

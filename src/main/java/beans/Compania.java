@@ -17,7 +17,7 @@ public class Compania {
 		this.nombre = nombre;
 		this.enlaceOficial = enlaceOficial;
 	}
-	public Imagen getImagen() {
+	public Imagen getImg() {
 		return imagen;
 	}
 
